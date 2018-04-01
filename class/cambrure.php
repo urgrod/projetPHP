@@ -13,6 +13,7 @@ class Cambrure{
   private $_date_creation;
   private $_fic_img;
   private $_fig_csv;
+  private $_id_parametre;
 
   public function id(){
     return $this->_id;
@@ -64,44 +65,48 @@ class Cambrure{
     $this->_id = (int) $id;
   }
 
-  public function setLibelle(){
+  public function setLibelle($libelle){
     $this->_libelle = $libelle;
   }
 
-  public function setCorde(){
+  public function setCorde($corde){
     $this->_corde = $corde;
   }
 
-  public function setTmaxPourcent(){
+  public function setTmaxPourcent($tmax_pourcent){
     $this->$_tmax_pourcent = $tmax_pourcent;
   }
 
-  public function setTmaxMm (){
+  public function setTmaxMm ($tmax_mm){
     $this->$_tmax_mm = $tmax_mm;
   }
 
-  public function setFmaxPourcent(){
+  public function setFmaxPourcent($fmax_pourcent){
     $this->$_fmax_pourcent = $fmax_pourcent;
   }
 
-  public function setFmaxMm(){
+  public function setFmaxMm($fmax_mm){
     $this->$_fmax_mm = $fmax_mm;
   }
 
-  public function setNbPoints(){
+  public function setNbPoints($nb_pts){
     $this->$_nb_pts = $nb_pts;
   }
 
-  public function setDateCreation(){
+  public function setDateCreation($date_creation){
     $this->$_date_creation = $date_creation;
   }
 
-  public function setFicImg(){
+  public function setFicImg($fic_img){
     $this->$_fic_img = $fic_img;
   }
 
-  public function setFicCsv(){
+  public function setFicCsv($fic_csv){
     $this->$_fic_csv = $fic_csv;
+  }
+
+  public function setIdParametre($id_parametre){
+    $this->$_id_parametre = $id_parametre
   }
 
 
