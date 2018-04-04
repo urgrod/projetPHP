@@ -1,6 +1,6 @@
 <?php
 
-class Parameters{
+class Parametre{
 
   private $_id;
   private $_libelle;
@@ -9,7 +9,7 @@ class Parameters{
   private $_tmax_mm;
   private $_fmax_pourcent;
   private $_fmax_mm;
-  private $_nb_pts;
+  private $_nb_points;
   private $_date_creation;
   private $_fic_img;
   private $_fig_csv;
@@ -43,7 +43,7 @@ class Parameters{
     return $this->$_fmax_mm;
   }
 
-  public function nb_pts(){
+  public function nb_points(){
     return $this->$_nb_pts;
   }
 
