@@ -11,14 +11,14 @@ CREATE TABLE parametre(
         id            int (11) Auto_increment  NOT NULL ,
         libelle       Varchar (25) ,
         corde         Int ,
-        tmax_pourcent Int ,
         tmax_mm       Int ,
-        fmax_pourcent Int ,
+        tmax_pourcent Int ,
         fmax_mm       Int ,
-        nb_pts        Int ,
+        fmax_pourcent Int ,
+        nb_points     Int ,
         date_creation Date ,
         fic_img       Varchar (25) ,
-        fig_csv       Varchar (25) ,
+        fic_csv       Varchar (25) ,
         PRIMARY KEY (id )
 )ENGINE=InnoDB;
 
@@ -32,8 +32,8 @@ CREATE TABLE cambrure(
         x            Int ,
         t            Int ,
         f            Int ,
-        y_intra      Int ,
-        y_extra      Int ,
+        yintra       Int ,
+        yextra       Int ,
         lgx          Int ,
         id_parametre Int ,
         PRIMARY KEY (id )
