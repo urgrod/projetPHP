@@ -1,0 +1,239 @@
+REM  *****  BASIC  *****
+
+
+
+rem calcul du profil sans cambrure
+Sub Main
+
+	rem affichage de test
+	rem msgbox "test"
+
+	rem declaration des variables
+
+	dim nbPoint as integer
+	dim dX as single
+	dim x as double
+
+	dim epaisseur as double
+	dim epaisseurMoyenne as double
+	dim epaisseurMax as integer
+	dim epaisseurMaxCalculer as double
+
+	dim cambrurefMax as integer
+	dim cambrurefMaxCalculer as double
+
+	dim corde as integer
+
+	dim dSi as double
+	dim sommedSi as double
+
+	dim dSi_Xgi as double
+	dim sommedSi_Xgi as double
+
+	dim extrados as double
+	dim intrados as double
+
+	dim xCentreGravite as double
+
+	Doc = thiscomponent
+
+	dim compteur as integer
+	rem -------------------------------------
+
+	rem affectation des feuilles
+	sheets = Doc.sheets
+	sheetParam = sheets.getByName("param")
+	sheetTab1 = sheets.getByName("tableau-1")
+	sheetTab2 = sheets.getByName("tableau-2")
+	rem -------------------------------------
+
+	rem initialisation des parametres
+	nbPoint = sheetParam.getCellByPosition(1,0).value
+	epaisseurMax = sheetParam.getCellByPosition(1,3).value
+	cambrurefMax = sheetParam.getCellByPosition(1,5).value
+	corde = sheetParam.getCellByPosition(1,2).value
+	rem -------------------------------------
+
+
+rem	msgbox "Le nb de point: " + nbPoint
+
+	epaisseurMaxCalculer = (corde*epaisseurMax)/100
+rem	msgbox "epaisseurMaxCalculert: " + epaisseurMaxCalculer
+
+	cambrurefMaxCalculer = (corde*cambrurefMax)/100
+rem	msgbox "cambrurefMaxCalculer: " + cambrurefMaxCalculer
+
+	dX = corde/nbPoint
+rem	msgbox "dX: " + dX
+
+	rem affectation des valeurs aux cellules
+	sheetParam.getCellByPosition(1,4).value = epaisseurMaxCalculer
+	sheetParam.getCellByPosition(1,6).value = cambrurefMaxCalculer
+	rem -------------------------------------
+
+	x = 0
+	dSi = 0
+
+	for compteur = 1 to nbPoint
+
+		epaisseur = -(1.015*(x/corde)^4 -2.843*(x/corde)^3 +3.516*(x/corde)^2 +1.26*(x/corde) -2.969*(x/corde)^(0.5))*epaisseurMaxCalculer
+		intrados = -epaisseur/2
+		extrados = epaisseur/2
+
+		epaisseurMoyenne = (intrados + extrados)/2
+		xCentreGravite = x/2
+
+		dSi = dx*epaisseurMoyenne
+		dSi_Xgi = dSi * xCentreGravite
+
+		sheetTab1.getCellByPosition(0,compteur).value = x
+		sheetTab1.getCellByPosition(1,compteur).value = epaisseur
+		sheetTab1.getCellByPosition(3,compteur).value = intrados
+		sheetTab1.getCellByPosition(4,compteur).value = extrados
+		sheetTab1.getCellByPosition(5,compteur).value = epaisseurMoyenne
+		sheetTab1.getCellByPosition(6,compteur).value = xCentreGravite
+		sheetTab1.getCellByPosition(7,compteur).value = dSi
+		sheetTab1.getCellByPosition(8,compteur).value = sommedSi_Xgi
+
+		sommedSi = sommedSi + dSi
+		sommedSi_Xgi = sommedSi_Xgi + dSi_Xgi
+
+		x = x + dx
+
+	next compteur
+
+
+End Sub
+
+
+
+rem /////////////////////////////////////////////////////////////////
+
+Sub main2
+
+	rem declaration des variables
+	dim nbPoint as integer
+	dim dX as single
+	dim x as double
+
+	dim epaisseur as double
+	dim epaisseurMoyenne as double
+	dim epaisseurMax as integer
+	dim epaisseurMaxCalculer as double
+
+	dim cambrurefMax as integer
+	dim cambrurefMaxCalculer as double
+
+	dim corde as integer
+
+	dim dSi as double
+	dim sommedSi as double
+
+	dim igz as double
+	dim surfaceSection as double
+
+	dim extrados as double
+	dim intrados as double
+	dim cambrure as double
+
+	dim xCentreGravite as double
+
+	Doc = thiscomponent
+
+	dim compteur as integer
+	rem -------------------------------------
+
+	rem affectation des feuilles
+	sheets = Doc.sheets
+	sheetParam = sheets.getByName("param")
+	sheetTab1 = sheets.getByName("tableau-1")
+	sheetTab2 = sheets.getByName("tableau-2")
+	rem -------------------------------------
+
+	rem initialisation des parametres
+	nbPoint = sheetParam.getCellByPosition(1,0).value
+	epaisseurMax = sheetParam.getCellByPosition(1,3).value
+	cambrurefMax = sheetParam.getCellByPosition(1,5).value
+	corde = sheetParam.getCellByPosition(1,2).value
+	rem -------------------------------------
+
+
+rem	msgbox "Le nb de point: " + nbPoint
+
+	epaisseurMaxCalculer = (corde*epaisseurMax)/100
+rem	msgbox "epaisseurMaxCalculert: " + epaisseurMaxCalculer
+
+	cambrurefMaxCalculer = (corde*cambrurefMax)/100
+rem	msgbox "cambrurefMaxCalculer: " + cambrurefMaxCalculer
+
+	dX = corde/nbPoint
+rem	msgbox "dX: " + dX
+
+	rem affectation des valeurs aux cellules
+	sheetParam.getCellByPosition(1,4).value = epaisseurMaxCalculer
+	sheetParam.getCellByPosition(1,6).value = cambrurefMaxCalculer
+	rem -------------------------------------
+
+	x = 0
+	igz = 0
+
+	for compteur = 1 to nbPoint
+
+		epaisseur = -(1.015*(x/corde)^4 -2.843*(x/corde)^3 +3.516*(x/corde)^2 +1.26*(x/corde) -2.969*(x/corde)^(0.5))*epaisseurMaxCalculer
+		cambrure = -4*((x/corde)^2 -(x/corde))*cambrurefMaxCalculer
+		intrados = cambrure -(epaisseur/2)
+		extrados = cambrure + (epaisseur/2)
+
+		epaisseurMoyenne = (intrados + extrados)/2
+		xCentreGravite = x/2
+		igz = (dx*(epaisseurMoyenne)^3)/12
+		surfaceSection = dx*epaisseurMoyenne
+
+		sheetTab2.getCellByPosition(0,compteur).value = x
+		sheetTab2.getCellByPosition(1,compteur).value = epaisseur
+		sheetTab2.getCellByPosition(2,compteur).value = cambrure
+		sheetTab2.getCellByPosition(3,compteur).value = intrados
+		sheetTab2.getCellByPosition(4,compteur).value = extrados
+		sheetTab2.getCellByPosition(5,compteur).value = epaisseurMoyenne
+		sheetTab1.getCellByPosition(6,compteur).value = xCentreGravite
+		sheetTab2.getCellByPosition(7,compteur).value = igz
+		sheetTab2.getCellByPosition(8,compteur).value = surfaceSection
+
+		x = x + dx
+
+	next compteur
+
+
+
+
+End Sub
+
+rem initialisation des parametres
+Sub param
+
+	dim nbPoint as integer
+	dim corde as integer
+
+	dim epaisseurMax as integer
+	dim epaisseurMaxCalculer as double
+
+	dim cambrurefMax as integer
+	dim cambrurefMaxCalculer as double
+
+	Doc = thiscomponent
+
+	rem -------------------------------------
+
+	rem affectation des feuilles
+	sheets = Doc.sheets
+	sheetParam = sheets.getByName("param")
+
+	rem -------------------------------------
+
+	rem initialisation des parametres
+	nbPoint = sheetParam.getCellByPosition(1,0).value
+	epaisseurMax = sheetParam.getCellByPosition(1,3).value
+	cambrurefMax = sheetParam.getCellByPosition(1,5).value
+	corde = sheetParam.getCellByPosition(1,2).value
+	rem -------------------------------------
+End Sub
