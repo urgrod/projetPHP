@@ -14,7 +14,7 @@ class ParametreManager{
 
   public function add(Parametre $parametre){
 
-    $query = $this->_db->prepare('INSERT INTO parametre (id, libelle, corde, tmax_mm, tmax_pourcent, fmax_mm, fmax_pourcent, nb_points, date_creation, fic_img, fic_csv) VALUES (NULL, :libelle, :corde, :tmax_mm, :tmax_pourcent, :fmax_mm, :fmax_pourcent, :nb_points, :date_creation, :fic_img, :fic_csv)');
+    $query = $this->_db->prepare('INSERT INTO parametre (id, libelle, corde, tmax_mm, tmax_pourcent, fmax_mm, fmax_pourcent, nb_points, date_creation, fic_img, fic_csv) VALUES (NULL, :libelle, :corde, :tmax_mm, :tmax_pourcent, :fmax_mm, :fmax_pourcent, :nb_points, :date_creation, :fic_img, :fic_csv);');
 
     $query->bindValue(":libelle", $parametre->libelle());
     $query->bindValue(":corde", $parametre->corde());
