@@ -12,7 +12,7 @@ class Cambrure
   private $_f;
   private $_yintra;
   private $_yextra;
-  private $_lgx
+  private $_lgx;
   private $id_parametre;
 
   public function id(){
@@ -87,7 +87,7 @@ class Cambrure
 
       if(method_exist($this, $method)){
         $this->$method($value);
-        )
+        
       }
     }
   }
