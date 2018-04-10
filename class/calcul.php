@@ -1,5 +1,7 @@
 <?php
 
+require_once('ParametreManager.php');
+require_once('CambrureManager.php');
 
 /**
 *

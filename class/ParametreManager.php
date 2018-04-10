@@ -64,7 +64,7 @@ class ParametreManager{
 
     $query = $this->_db->prepare("UPDATE parametre SET libelle=:libelle, corde =:corde, tmax_mm =:tmax_mm, tmax_pourcent =:tmax_pourcent, fmax_mm =:fmax_mm, fmax_pourcent =:fmax_pourcent, nb_points=:nb_points, date_creation=:date_creation WHERE id=:id");
 
-    $query->bindValue(":libelle", $parametre->libelle()), PDO::PARAM_INT);
+    $query->bindValue(":libelle", $parametre->libelle(), PDO::PARAM_INT);
     $query->bindValue(":corde", $parametre->corde(), PDO::PARAM_INT);
     $query->bindValue(":tmax_mm", $parametre->tmax_mm(), PDO::PARAM_INT);
     $query->bindValue(":tmax_pourcent", $parametre->tmax_pourcent(), PDO::PARAM_INT);
