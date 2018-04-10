@@ -87,7 +87,7 @@ class Cambrure
 
       if(method_exist($this, $method)){
         $this->$method($value);
-        )
+        
       }
     }
   }

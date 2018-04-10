@@ -19,6 +19,8 @@
 </div>
 
 <div class="container" id="input">
+	<div class="row">
+	<div class="col-sm-6 col-sm-offset-3">
 	<form action="php/graph.php" method="POST">
 	<div class="form-group">
 		<label for="libelle">Libellé</label>
@@ -47,6 +49,8 @@
 	</div>
 	<button type="submit" class="btn btn-primary">Ajouter</button>            
     </form>
+	</div>
+	</div>
     </div>
 </body>
 </html>
