@@ -6,7 +6,7 @@
 class CambrureManager
 {
 
-  function __construct(argument)
+  function __construct()
   {
     $this->setDb($db);
   }
@@ -17,7 +17,7 @@ class CambrureManager
 
   public function add(Cambrure $cambrure){
 
-      $query = $this->_db->prepare('INSERT INTO cambrure (id, x, t, yintra, yextra, lgx, id_parametre) VALUES (NULL, :x, :t, :f, :yintra, :yextra, :lgx, :id_parametre);')
+      $query = $this->_db->prepare('INSERT INTO cambrure (id, x, t, yintra, yextra, lgx, id_parametre) VALUES (NULL, :x, :t, :f, :yintra, :yextra, :lgx, :id_parametre)');
 
       $query->bindValue(":x", $cambrure->x());
       $query->bindValue(":t", $cambrure->t());
