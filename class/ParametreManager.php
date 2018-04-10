@@ -7,7 +7,7 @@ class ParametreManager{
 
   private $_db;
 
-  function __construct(argument)
+  function __construct()
   {
     $this->setDb($db);
   }
