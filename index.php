@@ -22,18 +22,24 @@
    
     <div class="container">
         <div class="col-sm-9" id="gallery">        
-        <div class="row">
-        <div class="col-md-4" id="first">
-                <div class="item">
-                <img class="preview" src="http://via.placeholder.com/150x150" onclick="alert()" alt="click to zoom">
-                    <h3>Libelle</h3>
-                                        
-                </div>
-              </div>
+            <div class="row">
+                <?php
+                    $nbr=4;
+                    $ids=array(1,2,3,4);
+                    for ($i=0; $i < $nbr; $i++) { 
+                        echo'<div class="col-md-4">';
+                        echo'<div class="item">';
+                        echo'<img class="preview" src="http://via.placeholder.com/150x150" onclick="alert()" alt="click to zoom">';
+                        echo'<h3>Libelle</h3>';
+                        echo'</div></div>';
 
-        </div>
+                    }
+                ?>
+               
+            </div>
+        
     <a href="php/addprofil.php">Ajouter un profil</a>
-    </div>
+        </div>
     </div>
     
         
