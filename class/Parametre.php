@@ -106,7 +106,7 @@ class Parametre{
   }
 
   public function setIdParametre($id_parametre){
-    $this->$_id_parametre = $id_parametre
+    $this->$_id_parametre = $id_parametre;
   }
 
 
@@ -116,7 +116,7 @@ class Parametre{
 
       if(method_exist($this, $method)){
         $this->$method($value);
-        )
+        
       }
     }
   }
