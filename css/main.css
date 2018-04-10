@@ -23,6 +23,12 @@ div.item>img {
     height: 225px;
     cursor: pointer;
 }
+div.item>a>img {
+    width: 100%;
+    height: 225px;
+    cursor: pointer;
+}
+
 div.item{
     border-color:rgb(221, 221, 221);
     border-radius:4px;
