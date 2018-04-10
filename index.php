@@ -38,7 +38,7 @@
                 <div class="col-md-4">
                     <div class="item">
                     <a href="php/addprofil.php">
-                        <img class="preview" src="/img/plus2.png" alt="click to zoom">
+                        <img class="preview" src="/img/plus.png" alt="click to zoom">
                     </a>
                     
                     </div>
