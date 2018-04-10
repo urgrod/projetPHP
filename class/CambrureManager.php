@@ -6,7 +6,7 @@
 class CambrureManager
 {
 
-  function __construct(argument)
+  function __construct()
   {
     $this->setDb($db);
   }
