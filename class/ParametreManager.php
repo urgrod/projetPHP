@@ -84,20 +84,26 @@ class ParametreManager{
     $this->_db = $db;
   }
 
-  public function calculTmaxmm(){
+  public function calculTmaxmm(Parametre $parametre){
 
+    $parametre->tmax_pourcent()*$cambrure->corde();
   }
 
   public function calculFmaxmm(){
 
+    $parametre->fmax_pourcent()*$cambrure->corde();
   }
 
   public function generateCsv(){
 
+    $file = fopen('./csv/'.$parametre->libelle(), w);
+
+    foreach()
+
   }
 
   public function generateImg(){
-    
+
   }
 }
 
