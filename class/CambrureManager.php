@@ -73,12 +73,15 @@ class CambrureManager
 
   }
 
-  public function calculYintra(){
+  public function calculYintra(Parametre $parametre){
 
+      return ($parametre->f() + $parametre->t()/2);
 
   }
 
   public function calculYextra(){
+
+    return ($parametre->f() - $parametre->t()/2);
 
   }
 
