@@ -83,6 +83,22 @@ class ParametreManager{
   public function setDb($db){
     $this->_db = $db;
   }
+
+  public function calculTmaxmm(){
+
+  }
+
+  public function calculFmaxmm(){
+
+  }
+
+  public function generateCsv(){
+
+  }
+
+  public function generateImg(){
+    
+  }
 }
 
 

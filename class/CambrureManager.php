@@ -72,6 +72,30 @@ class CambrureManager
     $query->execute();
 
   }
+
+  public function calculYintra(){
+
+
+  }
+
+  public function calculYextra(){
+
+  }
+
+  public function calculT(Parametre $parametre){
+
+    $x = 0;
+    for ($x=0; $x <$parametre->nb_points()  ; $x++) {
+      $epaisseur  = -(1.015*(x/corde)^4 -2.843*(x/corde)^3 + 3.516*(x/corde)^2 +1.26*(x/corde) - 2.969*(x/corde)^(0.5))*($parametre->tmax_mm());
+
+    }
+
+  }
+
+  public function calculF(){
+
+    $f = -4((x/C)^2 - (x/C)).$parametre->calculFmaxmm();
+  }
 }
 
 
