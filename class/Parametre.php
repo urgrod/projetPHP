@@ -13,7 +13,6 @@ class Parametre{
   private $_date_creation;
   private $_fic_img;
   private $_fig_csv;
-  private $_id_parametre;
 
   public function id(){
     return $this->_id;
@@ -116,7 +115,7 @@ class Parametre{
 
       if(method_exist($this, $method)){
         $this->$method($value);
-        
+
       }
     }
   }
