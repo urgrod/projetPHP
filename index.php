@@ -21,13 +21,13 @@
     </div>
    
     <div class="container">
-        <div class="col-sm-9" id="gallery">        
+        <div class="col-sm-12" id="gallery">        
             <div class="row">
                 <?php
-                    $nbr=4;
-                    $ids=array(1,2,3,4);
+                    $nbr=6;
+                    $ids=array(1,2,3,4,5,6);
                     for ($i=0; $i < $nbr; $i++) { 
-                        echo'<div class="col-md-4">';
+                        echo'<div class="col-md-3">';
                         echo'<div class="item">';
                         echo'<img class="preview" src="http://via.placeholder.com/150x150" onclick="alert()" alt="click to zoom">';
                         echo'<h3>Libelle</h3>';
@@ -35,7 +35,7 @@
 
                     }
                 ?>
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="item">
                     <a href="php/addprofil.php">
                         <img class="preview" src="/img/plus.png" alt="click to zoom">
