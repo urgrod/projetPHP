@@ -6,11 +6,15 @@
 	<title>Ajouter un profil</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<?php
-        include_once($_SERVER["DOCUMENT_ROOT"]."/include/header.php");
+        include_once($_SERVER["DOCUMENT_ROOT"]."/include/includes.php");
 	?>
     
 </head>
 <body>
+    <?php
+        include_once($_SERVER["DOCUMENT_ROOT"]."/include/header.php");
+	?>
+
 <div class="container" id="header"> 
         <div class="jumbotron">
             <h1>Ajoutez votre profil</h1>

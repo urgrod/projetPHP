@@ -15,13 +15,13 @@ div.item>h3{
     text-indent: 1em;
     text-decoration: underline;
     font-weight: bold;
+    margin-top: 10px;
 
 }
 
 div.item>img {
     width: 100%;
     height: 225px;
-    cursor: pointer;
 }
 div.item>a>img {
     width: 100%;
@@ -44,4 +44,7 @@ div.item{
     box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
     background-color: white;
     margin-bottom: 1.5rem;
+    
+    cursor: pointer;
 }
+
