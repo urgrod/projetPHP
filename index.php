@@ -10,7 +10,7 @@
     ?>
     <script src="main.js"></script>
 </head>
-<body>
+<body class="bg-light">
     <?php
         include_once($_SERVER["DOCUMENT_ROOT"]."/include/header.php");
 	?>

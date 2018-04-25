@@ -10,7 +10,7 @@
 	?>
     
 </head>
-<body>
+<body class="bg-light">
     <?php
         include_once($_SERVER["DOCUMENT_ROOT"]."/include/header.php");
 	?>
@@ -23,7 +23,7 @@
 </div>
 
 <div class="container" id="input">
-	<div class="row">
+	<div class="row  justify-content-md-center">
 	<div class="col-sm-6 col-sm-offset-3">
 	<form action="php/graph.php" method="POST">
 	<div class="form-group">

@@ -9,7 +9,7 @@
         include_once($_SERVER["DOCUMENT_ROOT"]."/include/includes.php");
 	?>
 </head>
-<body>
+<body class="bg-light">
     <?php
         include_once($_SERVER["DOCUMENT_ROOT"]."/include/header.php");
     ?>
@@ -20,7 +20,7 @@
         </div>
 </div>
 <div class="container">
-	<div class="row border border-light">
+	<div class="my-4 p-4 bg-white rounded box-shadow">
         <div class="col-sm-6 col-sm-offset-3">
             <img src="http://via.placeholder.com/600x400" alt="profil naca">
             <p>test</p>
@@ -28,8 +28,8 @@
         
     </div>
     <div class="row">
-        <h2>Paramêtres:</h2>
-        <button type="button" class="btn btn-primary">Export CSV</button>
+        <h2>Paramètres:</h2>
+        <button type="button" class="btn btn-primary">Exporter en CSV</button>
     </div>
 </div>
     

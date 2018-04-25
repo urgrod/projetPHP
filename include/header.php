@@ -14,8 +14,9 @@
             <a class="nav-link" href="http://projetphp/php/addprofil.php">Ajouter un profil</a>
           </li>
         </ul>
-        <form class="form-inline my-2 my-md-0">
-            <input class="form-control" type="text" placeholder="Search">
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="text" placeholder="Search (Si on a le time)" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
     </div>
 </nav>
