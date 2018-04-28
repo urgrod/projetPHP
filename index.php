@@ -10,12 +10,12 @@
     ?>
     <script src="main.js"></script>
 </head>
-<body class="bg-light">
+<body class="bg-light mb-5">
     <?php
         include_once($_SERVER["DOCUMENT_ROOT"]."/include/header.php");
 	?>
 
-    <div class="container" id="header"> 
+    <div class="container mt-4" id="header"> 
         <div class="jumbotron">
             <h1>Cambrure d'un profil Naca</h1>
             <p>Bienvenue sur notre site</p>
