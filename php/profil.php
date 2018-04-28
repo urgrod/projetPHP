@@ -17,8 +17,8 @@
         <div class="jumbotron">
         <?php
             echo "<h1>Profil ".$_GET['id']."</h1>";//Il faudra afficher le libellé après
-        ?>           
-            <p>Description complete du profil</p>
+        ?>
+        <p>Fiche descriptive du profil</p>         
         </div>
 </div>
 <div class="container">
