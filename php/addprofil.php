@@ -25,7 +25,7 @@
 <div class="container" id="input">
 	<div class="row  justify-content-md-center">
 	<div class="col-sm-6 col-sm-offset-3">
-	<form action="php/graph.php" method="POST">
+	<form action="/php/profil.php?profil=9" method="POST"><!--9 à remplacer par l'id du profil créé-->
 	<div class="form-group">
 		<label for="libelle">Libellé</label>
 		<input type="text" class="form-control" id="libelle" aria-describedby="libelleHelp">

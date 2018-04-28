@@ -27,12 +27,21 @@
         <div class="col-sm-12" id="gallery">        
             <div class="row">
                 <?php
+                //Faire des requetes bdd pour remplacer les valeurs brutes
                     $nbr=6;
                     $ids=array(1,2,3,4,5,6);
+                    $imgurl=array("empty",
+                    "http://via.placeholder.com/150x150",
+                    "http://via.placeholder.com/150x150",
+                    "http://via.placeholder.com/150x150",
+                    "http://via.placeholder.com/150x150",
+                    "http://via.placeholder.com/150x150",
+                    "http://via.placeholder.com/150x150");
+
                     for ($i=0; $i < $nbr; $i++) { 
                         echo'<div class="col-md-3">';
                         echo'<div class="item">';
-                        echo'<img class="preview" src="http://via.placeholder.com/150x150" onclick="alert()" alt="click to zoom">';
+                        echo'<img class="preview" src='.$imgurl[$ids[$i]].' onclick="location.href=\'php/profil.php?profil='.$ids[$i].'\';" alt="click to zoom">';
                         echo'<h3>Libelle</h3>';
                         echo'</div></div>';
 
