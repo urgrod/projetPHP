@@ -41,7 +41,7 @@
                     for ($i=0; $i < $nbr; $i++) { 
                         echo'<div class="col-md-3">';
                         echo'<div class="item">';
-                        echo'<img class="preview" src='.$imgurl[$ids[$i]].' onclick="location.href=\'php/profil.php?profil='.$ids[$i].'\';" alt="click to zoom">';
+                        echo'<img class="preview" src='.$imgurl[$ids[$i]].' onclick="location.href=\'php/profil.php?id='.$ids[$i].'\';" alt="click to zoom">';
                         echo'<h3>Libelle</h3>';
                         echo'</div></div>';
 

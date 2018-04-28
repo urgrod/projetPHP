@@ -15,7 +15,9 @@
     ?>
 <div class="container" id="header"> 
         <div class="jumbotron">
-            <h1>Profil 'libellé'</h1>
+        <?php
+            echo "<h1>Profil ".$_GET['id']."</h1>";//Il faudra afficher le libellé après
+        ?>           
             <p>Description complete du profil</p>
         </div>
 </div>
