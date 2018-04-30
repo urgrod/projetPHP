@@ -4,15 +4,15 @@
  *
  */
 
-include 'CambrureManager.php';
-include 'Cambrure.php';
-
+// include 'CambrureManager.php';
+// include 'Cambrure.php';
+include 'Parametre.php';
 
 class ParametreManager{
 
   private $_db;
 
-  function __construct()
+  function __construct($db)
   {
     $this->setDb($db);
   }
@@ -81,7 +81,8 @@ class ParametreManager{
 
     $query->execute();
 
-
+    $img = generateImg($parametre);
+    $csv = generateCsv($parametre);
 
   }
 
@@ -89,27 +90,29 @@ class ParametreManager{
     $this->_db = $db;
   }
 
-  public function calculTmaxmm(Parametre $parametre, Cambrure $cambrure){
+  public function calculTmaxmm(Parametre $parametre){
 
-    return $parametre->tmax_pourcent()*($cambrure->corde());
+    return $parametre->tmax_pourcent()*($parametre->corde());
   }
 
-  public function calculFmaxmm(){
+  public function calculFmaxmm(Parametre $parametre){
 
-    return $parametre->fmax_pourcent()*($cambrure->corde());
+    return $parametre->fmax_pourcent()*($parametre->corde());
 
   }
 
-  public function generateCsv(){
+  public function generateCsv(Parametre $parametre){
 
     $file = fopen('../csv/'.$parametre->libelle(), w);
 
     // foreach()
 
+    return "nom du fic";
   }
 
-  public function generateImg(){
+  public function generateImg(Parametre $parametre){
 
+    return 'nom du fic';
   }
 }
 

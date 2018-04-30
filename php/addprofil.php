@@ -8,14 +8,14 @@
 	<?php
         include_once($_SERVER["DOCUMENT_ROOT"]."/include/includes.php");
 	?>
-    
+
 </head>
 <body class="bg-light mb-5">
     <?php
         include_once($_SERVER["DOCUMENT_ROOT"]."/include/header.php");
 	?>
 
-<div class="container mt-4" id="header"> 
+<div class="container mt-4" id="header">
         <div class="jumbotron">
             <h1>Ajoutez votre profil</h1>
             <p>Rentrez les parametres pour le calcul, nous nous occupons du reste.</p>
@@ -25,7 +25,7 @@
 <div class="container" id="input">
 	<div class="row  justify-content-md-center">
 	<div class="col-sm-6 col-sm-offset-3">
-	<form action="/php/profil.php?id=9" method="POST"><!--9 à remplacer par l'id du profil créé-->
+	<form action="/php/addprofilscript.php" method="POST"><!--9 à remplacer par l'id du profil créé-->
 
 	<?php
 		$placeholders=array();
@@ -35,7 +35,7 @@
 			$placeholders[2]=$_GET['Tmax'];
 			$placeholders[3]=$_GET['Fmax'];
 		}else{
-			for ($i=0; $i < 4; $i++) { 
+			for ($i=0; $i < 4; $i++) {
 				$placeholders[$i]="";
 			}
 		}
@@ -74,7 +74,7 @@
 		?>
 		<small id="FmaxHelp" class="form-text text-muted">Entrez Fmax (en pourcentage)</small>
 	</div>
-	<button type="submit" class="btn btn-primary">Ajouter</button>            
+	<button type="submit" class="btn btn-primary">Ajouter</button>
     </form>
 	</div>
 	</div>

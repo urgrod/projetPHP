@@ -43,7 +43,7 @@ class Parametre{
   }
 
   public function nb_points(){
-    return $this->$_nb_pts;
+    return $this->$_nb_points;
   }
 
   public function date_creation(){
@@ -88,8 +88,8 @@ class Parametre{
     $this->$_fmax_mm = $fmax_mm;
   }
 
-  public function setNbPoints($nb_pts){
-    $this->$_nb_pts = $nb_pts;
+  public function setNbPoints($nb_points){
+    $this->$_nb_points = $nb_points;
   }
 
   public function setDateCreation($date_creation){

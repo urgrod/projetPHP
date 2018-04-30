@@ -10,7 +10,7 @@ include 'Parametre.php';
 class CambrureManager
 {
 
-  function __construct()
+  function __construct($db)
   {
     $this->setDb($db);
   }
