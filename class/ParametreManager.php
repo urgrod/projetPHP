@@ -3,6 +3,11 @@
 /**
  *
  */
+
+include 'CambrureManager.php';
+include 'Cambrure.php';
+
+
 class ParametreManager{
 
   private $_db;
@@ -84,21 +89,22 @@ class ParametreManager{
     $this->_db = $db;
   }
 
-  public function calculTmaxmm(Parametre $parametre){
+  public function calculTmaxmm(Parametre $parametre, Cambrure $cambrure){
 
-    $parametre->tmax_pourcent()*$cambrure->corde();
+    return $parametre->tmax_pourcent()*($cambrure->corde());
   }
 
   public function calculFmaxmm(){
 
-    $parametre->fmax_pourcent()*$cambrure->corde();
+    return $parametre->fmax_pourcent()*($cambrure->corde());
+
   }
 
   public function generateCsv(){
 
-    $file = fopen('./csv/'.$parametre->libelle(), w);
+    $file = fopen('../csv/'.$parametre->libelle(), w);
 
-    foreach()
+    // foreach()
 
   }
 

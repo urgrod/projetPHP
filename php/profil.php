@@ -13,12 +13,21 @@
     <?php
         include_once($_SERVER["DOCUMENT_ROOT"]."/include/header.php");
     ?>
-<div class="container mt-4" id="header"> 
+<div class="container mt-4" id="header">
         <div class="jumbotron">
         <?php
-            echo "<h1>Profil ".$_GET['id']."</h1>";//Il faudra afficher le libellé après
+
+        include '../class/ParametreManager.php';
+        $db = new PDO('mysql:host=localhost;dbname=projet_php', 'root', '');
+
+          $dataManager = new ParametreManager($db);
+
+          $data = $dataManager->get($_GET['id']);
+
+            echo "<h1>Profil ".$data->libelle()."</h1>";
+
         ?>
-        <p>Fiche descriptive du profil</p>         
+        <p>Fiche descriptive du profil</p>
         </div>
 </div>
 <div class="container">
@@ -29,7 +38,7 @@
         <div class="row">
             <button type="button" class="btn btn-primary">Exporter en CSV</button>
         </div>
-        
+
     </div>
     <div class="my-4 p-4 bg-white rounded box-shadow">
         <div class="col-sm-6 col-sm-offset-3">
@@ -40,43 +49,43 @@
                         <td class="table-light">N:</td>
                         <?php
                             $N=200;
-                            echo '<td class="table-default">'.$N.'</td>';
+                            echo '<td class="table-default">'.$data->nb_points().'</td>';
                         ?>
-                        
+
                     </tr>
                     <tr>
                         <td class="table-light">Corde:</td>
                         <?php
                             $Corde=10;
-                            echo '<td class="table-default">'.$Corde.'</td>';
+                            echo '<td class="table-default">'.$data->corde().'</td>';
                         ?>
                     </tr>
                     <tr>
                         <td class="table-light">Tmax(%):</td>
                         <?php
                             $Tmax=15;
-                            echo '<td class="table-default">'.$Tmax.'</td>';
-                        ?>   
+                            echo '<td class="table-default">'.$data->tmax_pourcent().'</td>';
+                        ?>
                     </tr>
                     <tr>
                         <td class="table-light">Fmax(%):</td>
                         <?php
                             $Fmax=10;
-                            echo '<td class="table-default">'.$Fmax.'</td>';
-                        ?>   
+                            echo '<td class="table-default">'.$data->fmax_pourcent().'</td>';
+                        ?>
                     </tr>
                </tbody>
             </table>
             <?php
-                $get_request='N='.$N.'&Corde='.$Corde.'&Tmax='.$Tmax.'&Fmax='.$Fmax;
+                $get_request='N='.$data->nb_points().'&Corde='.$data->corde().'&Tmax='.$data->tmax_pourcent().'&Fmax='.$data->fmax_pourcent();
                 echo '<button type="button" onclick="location.href=\'/php/addprofil.php?'.$get_request.'\';" class="btn btn-success">Edit</button>'
             ?>
-            
+
         </div>
-        
+
     </div>
-    
+
 </div>
-    
+
 </body>
 </html>

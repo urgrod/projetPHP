@@ -3,6 +3,10 @@
 /**
 *
 */
+
+include 'ParametreManager.php';
+include 'Parametre.php';
+
 class CambrureManager
 {
 
@@ -73,22 +77,22 @@ class CambrureManager
 
   }
 
-  public function calculYintra(Parametre $parametre){
+  public function calculYintra(Cambrure $cambrure){
 
-      return ($parametre->f() + $parametre->t()/2);
-
-  }
-
-  public function calculYextra(){
-
-    return ($parametre->f() - $parametre->t()/2);
+      return ($cambrure->f() + $cambrure->t()/2);
 
   }
 
-  public function calculT(Parametre $parametre){
+  public function calculYextra(Cambrure $cambrure){
+
+    return ($cambrure->f() - $cambrure->t()/2);
+
+  }
+
+  public function calculT(Cambrure $cambrure, Parametre $parametre){
 
     $x = 0;
-    for ($x=0; $x <$parametre->nb_points()  ; $x++) {
+    for ($x=0; $x <$cambrure->nb_points()  ; $x++) {
       $epaisseur  = -(1.015*(x/corde)^4 -2.843*(x/corde)^3 + 3.516*(x/corde)^2 +1.26*(x/corde) - 2.969*(x/corde)^(0.5))*($parametre->tmax_mm());
 
     }
@@ -97,7 +101,7 @@ class CambrureManager
 
   public function calculF(){
 
-    $f = -4((x/C)^2 - (x/C)).$parametre->calculFmaxmm();
+    // $f = -4((x/C)^2 - (x/C)).$parametre->calculFmaxmm();
   }
 }
 
