@@ -12,8 +12,12 @@ class Cambrure
   private $_f;
   private $_yintra;
   private $_yextra;
-  private $_lgx;
-  private $id_parametre;
+  private $_igx;
+  private $_id_parametre;
+
+  public function __construct(array $data){
+    $this->hydrate($data);
+  }
 
   public function id(){
     return $this->_id;
@@ -39,8 +43,8 @@ class Cambrure
     return $this->_yextra;
   }
 
-  public function lgx(){
-    return $this->_lgx;
+  public function igx(){
+    return $this->_igx;
   }
 
   public function id_parametre(){
@@ -72,8 +76,8 @@ class Cambrure
     $this->_yextra = (int) $yextra;
   }
 
-  public function setLgx($lgx){
-    $this->_lgx = (int) $lgx;
+  public function setIgx($igx){
+    $this->_igx = (int) $igx;
   }
 
   public function setId_parametre($id_parametre){

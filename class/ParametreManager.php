@@ -1,8 +1,8 @@
 <?php
 
 /**
- *
- */
+*
+*/
 
 // include 'CambrureManager.php';
 // include 'Cambrure.php';
@@ -90,31 +90,81 @@ class ParametreManager{
     $this->_db = $db;
   }
 
-  public function calculTmaxmm(Parametre $parametre){
+  public function calculTmaxmm($tmax_pourcent, $corde){
 
-    return $parametre->tmax_pourcent()*($parametre->corde());
+    return $tmax_pourcent*$corde;
   }
 
-  public function calculFmaxmm(Parametre $parametre){
+  public function calculFmaxmm($fmax_pourcent, $corde){
 
-    return $parametre->fmax_pourcent()*($parametre->corde());
-
+    return $fmax_pourcent*$corde;
   }
 
-  public function generateCsv(Parametre $parametre){
+  public function generateCsv($nom, $intraArray, $extraArray){
 
-    $file = fopen('../csv/'.$parametre->libelle(), w);
+    for ($i=0; $i<sizeof($intraArray); $i++) {
+      $lignes[] = array($i, $intraArray[$i], $extraArray[$i]);
+    }
 
-    // foreach()
+    $path = '../csv/'.$nom.'.csv';
+    $separateur = ',';
+    $file = fopen($path, 'w+');
 
-    return "nom du fic";
+    foreach ($lignes as $ligne) {
+      fputcsv($file, $ligne, $separateur);
+    }
+
+    fclose($file);
+
+    return $nom.'.csv';
   }
 
-  public function generateImg(Parametre $parametre){
+  public function generateImg($nom, $intraArray, $extraArray){
 
-    return 'nom du fic';
+    require_once ('../jpgraph-4.2.0/jpgraph.php');
+    require_once ('../jpgraph-4.2.0/jpgraph_line.php');
+
+    $graph = new Graph(300, 250);
+
+    $theme_class = new UniversalTheme;
+    $graph->setTheme($theme_class);
+    $graph->img->SetAntiAliasing(false);
+    $graph->title->Set($nom);
+    $graph->SetBox(false);
+
+    $graph->img->SetAntiAliasing();
+
+    $graph->yaxis->HideZeroLabel();
+    $graph->yaxis->HideLine(false);
+    $graph->yaxis->HideTicks(false,false);
+
+    $graph->xgrid->Show();
+    $graph->xgrid->SetLineStyle("solid");
+    $graph->xgrid->SetColor('#E3E3E3');
+
+    $intra = new LinePlot($intraArray);
+    $graph->Add($intra);
+    $intra->SetColor("#6495ED");
+    $intra->SetLegend('Intrados');
+
+    $extra = new LinePlot($extraArray);
+    $grpah->Add($extra);
+    $extra->SetColor("#6495ED");
+    $intra->SetLegend('Extrados');
+
+    $graph->legend->SetFrameWeight(1);
+    // $graph->Stroke();
+    $graph->Stroke('../img/'.$nom.'.png');
+
+    return $nom.'.png';
+  }
+
+  public function getDbId(){
+    $query = $this->_db->query("SELECT id FROM parametre ORDER BY id DESC");
+    $data = $query->fetch(PDO::FETCH_ASSOC)
+    return $data;
   }
 }
 
 
- ?>
+?>

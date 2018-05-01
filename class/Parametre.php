@@ -14,6 +14,11 @@ class Parametre{
   private $_fic_img;
   private $_fig_csv;
 
+  public function __construct(array $data){
+    $this->hydrate($data);
+  }
+
+
   public function id(){
     return $this->_id;
   }
@@ -27,35 +32,35 @@ class Parametre{
   }
 
   public function tmax_pourcent(){
-    return $this->$_tmax_pourcent;
+    return $this->_tmax_pourcent;
   }
 
   public function tmax_mm(){
-    return $this->$_tmax_mm;
+    return $this->_tmax_mm;
   }
 
   public function fmax_pourcent(){
-    return $this->$_fmax_pourcent;
+    return $this->_fmax_pourcent;
   }
 
   public function fmax_mm(){
-    return $this->$_fmax_mm;
+    return $this->_fmax_mm;
   }
 
   public function nb_points(){
-    return $this->$_nb_points;
+    return $this->_nb_points;
   }
 
   public function date_creation(){
-    return $this->$_date_creation;
+    return $this->_date_creation;
   }
 
   public function fic_img(){
-    return $this->$_fic_img;
+    return $this->_fic_img;
   }
 
   public function fic_csv(){
-    return $this->$_fic_csv;
+    return $this->_fic_csv;
   }
 
 
@@ -73,39 +78,39 @@ class Parametre{
   }
 
   public function setTmaxPourcent($tmax_pourcent){
-    $this->$_tmax_pourcent = $tmax_pourcent;
+    $this->_tmax_pourcent = $tmax_pourcent;
   }
 
   public function setTmaxMm ($tmax_mm){
-    $this->$_tmax_mm = $tmax_mm;
+    $this->_tmax_mm = $tmax_mm;
   }
 
   public function setFmaxPourcent($fmax_pourcent){
-    $this->$_fmax_pourcent = $fmax_pourcent;
+    $this->_fmax_pourcent = $fmax_pourcent;
   }
 
   public function setFmaxMm($fmax_mm){
-    $this->$_fmax_mm = $fmax_mm;
+    $this->_fmax_mm = $fmax_mm;
   }
 
   public function setNbPoints($nb_points){
-    $this->$_nb_points = $nb_points;
+    $this->_nb_points = $nb_points;
   }
 
   public function setDateCreation($date_creation){
-    $this->$_date_creation = $date_creation;
+    $this->_date_creation = $date_creation;
   }
 
   public function setFicImg($fic_img){
-    $this->$_fic_img = $fic_img;
+    $this->_fic_img = $fic_img;
   }
 
   public function setFicCsv($fic_csv){
-    $this->$_fic_csv = $fic_csv;
+    $this->_fic_csv = $fic_csv;
   }
 
   public function setIdParametre($id_parametre){
-    $this->$_id_parametre = $id_parametre;
+    $this->_id_parametre = $id_parametre;
   }
 
 

@@ -18,20 +18,19 @@ class CambrureManager
   public function setDb($db){
     $this->_db = $db;
   }
-
   public function add(Cambrure $cambrure){
 
-      $query = $this->_db->prepare('INSERT INTO cambrure (id, x, t, yintra, yextra, lgx, id_parametre) VALUES (NULL, :x, :t, :f, :yintra, :yextra, :lgx, :id_parametre)');
+    $query = $this->_db->prepare('INSERT INTO cambrure (id, x, t, yintra, yextra, lgx, id_parametre) VALUES (NULL, :x, :t, :f, :yintra, :yextra, :lgx, :id_parametre)');
 
-      $query->bindValue(":x", $cambrure->x());
-      $query->bindValue(":t", $cambrure->t());
-      $query->bindValue(":f", $cambrure->f());
-      $query->bindValue(":yintra", $cambrure->yintra());
-      $query->bindValue(":yextra", $cambrure->yextra());
-      $query->bindValue(":lgx", $cambrure->lgx());
-      $query->bindValue(":id_parametre", $cambrure->id_parametre());
+    $query->bindValue(":x", $cambrure->x());
+    $query->bindValue(":t", $cambrure->t());
+    $query->bindValue(":f", $cambrure->f());
+    $query->bindValue(":yintra", $cambrure->yintra());
+    $query->bindValue(":yextra", $cambrure->yextra());
+    $query->bindValue(":lgx", $cambrure->lgx());
+    $query->bindValue(":id_parametre", $cambrure->id_parametre());
 
-      $query->execute();
+    $query->execute();
   }
 
   public function delete(Cambrure $cambrure){
@@ -42,10 +41,10 @@ class CambrureManager
 
   public function get($id){
 
-      $query = $this->_db->query("SELECT * FROM parametre WHERE id=".$id);
-      $data = $query->fetch(PDO::FETCH_ASSOC);
+    $query = $this->_db->query("SELECT * FROM parametre WHERE id=".$id);
+    $data = $query->fetch(PDO::FETCH_ASSOC);
 
-      return new Cambrure($data);
+    return new Cambrure($data);
   }
 
   public function getList(){
@@ -55,7 +54,7 @@ class CambrureManager
     $query = $this->_db->query("SELECT * FROM cambrure;");
 
     While($data = $query->fetch(PDO::FETCH_ASSOC)){
-      $cambrures[] = new Parametre($data);
+      $cambrures[] = new Cambrure($data);
     }
 
     return $cambures;
@@ -77,31 +76,43 @@ class CambrureManager
 
   }
 
-  public function calculYintra(Cambrure $cambrure){
+  public function calculYintra( $f,  $t,  $nb_pts){
 
-      return ($cambrure->f() + $cambrure->t()/2);
-
-  }
-
-  public function calculYextra(Cambrure $cambrure){
-
-    return ($cambrure->f() - $cambrure->t()/2);
+    for ($x=0; $x <$nb_pts ; $x++) {
+      $array[] = array($f[$x] + $t[$x]);
+    }
+    return $array;
 
   }
 
-  public function calculT(Cambrure $cambrure, Parametre $parametre){
+  public function calculYextra( $f,  $t,  $nb_pts){
 
-    $x = 0;
-    for ($x=0; $x <$cambrure->nb_points()  ; $x++) {
+    for ($x=0; $x <$nb_pts ; $x++) {
+      $array[] = array($f[$x] - $t[$x]);
+    }
+    return $array;
+
+  }
+
+  public function calculT( $nb_pts){
+
+    for ($x=0; $x <$nb_pts  ; $x++) {
       $epaisseur  = -(1.015*(x/corde)^4 -2.843*(x/corde)^3 + 3.516*(x/corde)^2 +1.26*(x/corde) - 2.969*(x/corde)^(0.5))*($parametre->tmax_mm());
-
+      $array[] = array($epaisseur);
     }
 
+    return $array;
+
   }
 
-  public function calculF(){
+  public function calculF( $fmax,  $nb_pts){
 
-    // $f = -4((x/C)^2 - (x/C)).$parametre->calculFmaxmm();
+    for ($x=0; $x < $nb_pts; $x++) {
+      $f = -4((x/C)^2 - (x/C)).$fmax;
+      $array[] = array($f);
+    }
+
+    return $array;
   }
 }
 
