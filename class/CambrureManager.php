@@ -4,8 +4,6 @@
 *
 */
 
-include 'ParametreManager.php';
-include 'Parametre.php';
 
 class CambrureManager
 {
@@ -79,7 +77,11 @@ class CambrureManager
   public function calculYintra( $f,  $t,  $nb_pts){
 
     for ($x=0; $x <$nb_pts ; $x++) {
-      $array[] = array($f[$x] + $t[$x]);
+      $valF = $f[$x];
+      $valT = $t[$x];
+      // $calcul = ($valT + $valF);
+      $calcul=0;
+      $array[] = array($calcul);
     }
     return $array;
 
@@ -88,16 +90,20 @@ class CambrureManager
   public function calculYextra( $f,  $t,  $nb_pts){
 
     for ($x=0; $x <$nb_pts ; $x++) {
-      $array[] = array($f[$x] - $t[$x]);
+      $valF = $f[$x];
+      $valT = $t[$x];
+      // $calcul = ($valT - $valF);
+      $calcul =0;
+      $array[] = array($calcul);
     }
     return $array;
 
   }
 
-  public function calculT( $nb_pts){
+  public function calculT( $nb_pts, $tmax, $corde){
 
     for ($x=0; $x <$nb_pts  ; $x++) {
-      $epaisseur  = -(1.015*(x/corde)^4 -2.843*(x/corde)^3 + 3.516*(x/corde)^2 +1.26*(x/corde) - 2.969*(x/corde)^(0.5))*($parametre->tmax_mm());
+      $epaisseur  = -(1.015*$x/$corde)^4 -2.843*($x/$corde)^3 + 3.516*($x/$corde)^2 +1.26*($x/$corde) - 2.969*($x/$corde)^(0.5)*$tmax;
       $array[] = array($epaisseur);
     }
 
@@ -105,12 +111,14 @@ class CambrureManager
 
   }
 
-  public function calculF( $fmax,  $nb_pts){
+  public function calculF( $fmax,  $nb_pts, $corde){
 
+    // var_dump($fmax);
     for ($x=0; $x < $nb_pts; $x++) {
-      $f = -4((x/C)^2 - (x/C)).$fmax;
-      $array[] = array($f);
+      $f = -4*(($x/$corde)^2 - ($x/$corde)).$fmax;
+      $array[] = (int)$f;
     }
+    // var_dump($array);
 
     return $array;
   }

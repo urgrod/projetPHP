@@ -1,14 +1,16 @@
 <?php
 
 include '../class/ParametreManager.php';
+include '../class/CambrureManager.php';
+
 $db = new PDO('mysql:host=localhost;dbname=projet_php', 'root', '');
 
-if (isset($_POST['libelle']) && isset($_POST['N']) && isset($_POST['corde']) && isset($_POST['Tmax']) && isset($_POST['Fmax'])) {
-  $libelle = $_POST['libelle'];
-  $nb_points = $_POST['N'];
-  $corde = $_POST['corde'];
-  $tmax = $_POST['Tmax'];
-  $fmax = $_POST['Fmax'];
+// if (isset($_GET['libelle']) && isset($_GET['N']) && isset($_GET['corde']) && isset($_GET['Tmax']) && isset($_GET['Fmax'])) {
+  $libelle = $_GET['libelle'];
+  $nb_points = $_GET['N'];
+  $corde = $_GET['corde'];
+  $tmax = $_GET['Tmax'];
+  $fmax = $_GET['Fmax'];
 
   $parametreManager = new ParametreManager($db);
   $cambrureManager = new CambrureManager($db);
@@ -16,11 +18,12 @@ if (isset($_POST['libelle']) && isset($_POST['N']) && isset($_POST['corde']) && 
   $tmax_mm = $parametreManager->calculTmaxmm($tmax, $corde);
   $fmax_mm = $parametreManager->calculFmaxmm($fmax, $corde);
   $dateCreation = date('Y-m-d');
-  $idparam = $parametreManager->getDbId()+1;
+  $returnId = $parametreManager->getDbId();
+  $idparam = $returnId['id'];
 
   $x = $corde/$nb_points;
-  $t = $cambrureManager->calculT($nb_points);
-  $f = $cambrureManager->calculF($fmax_mm, $nb_points);
+  $t = $cambrureManager->calculT($nb_points, $tmax_mm, $corde);
+  $f = $cambrureManager->calculF($fmax_mm, $nb_points, $corde);
   $intra = $cambrureManager->calculYintra($f, $t, $nb_points);
   $extra = $cambrureManager->calculYextra($f, $t, $nb_points);
 
@@ -38,8 +41,8 @@ $parametreManager->add($parametre);
 $cambrureManager->add($cambrure);
 
 // header('');
-}
-else {
-  echo "if non valide";
-}
+// }
+// else {
+//   echo "if non valide";
+// }
 ?>
