@@ -3,7 +3,7 @@ visualiser tous les enregistrements existants en base
 • pour un enregistrement, accéder au détail avec :
 fait         ◦ affichage de tous les paramètres
 a faire     ◦ affichage des graphiques associés (cambrure et rigidité/solidité)
-a faire      ◦ lien pour réaliser un export de tous les points enregistrés au format
+fait      ◦ lien pour réaliser un export de tous les points enregistrés au format
                 csv
 fait        • créer une page permettant de créer un nouvel enregistrement
                     (formulaire de saisie des paramètres)
@@ -20,3 +20,5 @@ fait      • sauvegarder les fichiers générés (image et csv) et les rattache
 
 
 calculer le igx dans la cambrure -> j'ai pas trouve la formule
+
+utiliser la methode $parametreManager->getDbImg($id);, retourne le nom de l'image qu'il faut afficher

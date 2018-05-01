@@ -162,6 +162,13 @@ class ParametreManager{
     $data = $query->fetch(PDO::FETCH_ASSOC);
     return $data;
   }
+
+  public function getDbImg($id){
+    $query = $this->_db->query("SELECT fic_img FROM parametre ORDER BY id DESC");
+    $data = $query->fetch(PDO::FETCH_ASSOC);
+    return $data;
+
+  }
 }
 
 

@@ -33,22 +33,23 @@
   <div class="container">
     <div class="my-4 p-4 bg-white rounded box-shadow">
       <div class="row">
-        <img src="http://via.placeholder.com/600x400" class="rounded mx-auto d-block" alt="profil naca">
+
+        <?php
+        echo '<img src="../img/'.$data->fic_img().'" class="rounded mx-auto d-block" alt="profil naca">';
+
+         ?>
       </div>
       <table>
         <tr>
           <td>
-            <form action="exportCsv.php" method="post" id="exportCsv">
               <?php
-                echo '<input id="idProfil" name="id" type="hidden" value="'.$_GET['id'].'">';
+                echo '<a href="../csv/'.$data->fic_csv().'">Exporter en CSV</a>';
               ?>
 
-              <button type="submit" class="btn btn-primary">Exporter en CSV</button>
-            </form>
           </td>
 
           <td>
-            <form action="deleteProfil.php" method="post" id="deleteProfil">
+            <form action="deleteProfil.php" method="get" id="deleteProfil">
               <?php
                 echo '<input id="idProfil" name="id" type="hidden" value="'.$_GET['id'].'">';
               ?>
