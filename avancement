@@ -2,7 +2,7 @@ visualiser tous les enregistrements existants en base
 
 • pour un enregistrement, accéder au détail avec :
 fait         ◦ affichage de tous les paramètres
-en cours, cambrure fait     ◦ affichage des graphiques associés (cambrure et rigidité/solidité)
+a faire     ◦ affichage des graphiques associés (cambrure et rigidité/solidité)
 a faire      ◦ lien pour réaliser un export de tous les points enregistrés au format
                 csv
 fait        • créer une page permettant de créer un nouvel enregistrement
@@ -19,7 +19,4 @@ fait      • sauvegarder les fichiers générés (image et csv) et les rattache
                       l’enregistrement réalisé
 
 
-
-ajouter une redirection a la fin de addprofilscript.php
-la meme pour updateprofilscript.php
 calculer le igx dans la cambrure -> j'ai pas trouve la formule

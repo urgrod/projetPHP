@@ -4,6 +4,7 @@
 *
 */
 
+include 'Cambrure.php';
 
 class CambrureManager
 {
@@ -25,7 +26,7 @@ class CambrureManager
     $query->bindValue(":f", $cambrure->f());
     $query->bindValue(":yintra", $cambrure->yintra());
     $query->bindValue(":yextra", $cambrure->yextra());
-    $query->bindValue(":lgx", $cambrure->lgx());
+    $query->bindValue(":lgx", $cambrure->igx());
     $query->bindValue(":id_parametre", $cambrure->id_parametre());
 
     $query->execute();
@@ -67,7 +68,7 @@ class CambrureManager
     $query->bindValue(":f", $cambrure->f());
     $query->bindValue(":yintra", $cambrure->yintra());
     $query->bindValue(":yextra", $cambrure->yextra());
-    $query->bindValue(":lgx", $cambrure->lgx());
+    $query->bindValue(":lgx", $cambrure->igx());
     $query->bindValue(":id", $cambrure->id());
 
     $query->execute();

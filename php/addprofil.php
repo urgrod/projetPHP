@@ -25,7 +25,7 @@
 <div class="container" id="input">
 	<div class="row  justify-content-md-center">
 	<div class="col-sm-6 col-sm-offset-3">
-	<form action="/php/addprofilscript.php" method="get"><!--9 à remplacer par l'id du profil créé-->
+	<form action="/php/script/addprofilscript.php" method="post"><!--9 à remplacer par l'id du profil créé-->
 
 	<?php
 		$placeholders=array();
@@ -43,34 +43,34 @@
 
 	<div class="form-group">
 		<label for="libelle">Libellé</label>
-		<input type="text" class="form-control" id="libelle" aria-describedby="libelleHelp">
+		<input type="text" class="form-control" id="libelle" aria-describedby="libelleHelp" name="libelle">
 		<small id="libelleHelp" class="form-text text-muted">Entrez un nom pour votre profil</small>
 	</div>
 	<div class="form-group">
 		<label for="N">N:</label>
 		<?php
-			echo '<input type="text" class="form-control" id="N" value="'.$placeholders[0].'"aria-describedby="libelleHelp">'
+			echo '<input type="text" class="form-control" id="N" value="'.$placeholders[0].'"aria-describedby="libelleHelp" name="N">'
 		?>
 		<small id="NHelp" class="form-text text-muted">Entrez le nombre de points à calculer</small>
 	</div>
 	<div class="form-group">
 		<label for="Corde">Corde:</label>
 		<?php
-			echo '<input type="text" class="form-control" id="corde" value="'.$placeholders[1].'"aria-describedby="libelleHelp">'
+			echo '<input type="text" class="form-control" id="corde" value="'.$placeholders[1].'"aria-describedby="libelleHelp" name="corde">'
 		?>
 		<small id="CordeHelp" class="form-text text-muted">Entrez la corde</small>
 	</div>
 	<div class="form-group">
 		<label for="Tmax">Tmax(%):</label>
 		<?php
-			echo '<input type="text" class="form-control" id="Tmax" value="'.$placeholders[2].'"aria-describedby="libelleHelp">'
+			echo '<input type="text" class="form-control" id="Tmax" value="'.$placeholders[2].'"aria-describedby="libelleHelp" name="Tmax">'
 		?>
 		<small id="TmaxHelp" class="form-text text-muted">Entrez Tmax (en pourcentage)</small>
 	</div>
 	<div class="form-group">
 		<label for="Fmax">Fmax(%):</label>
 		<?php
-			echo '<input type="text" class="form-control" id="Fmax" value="'.$placeholders[3].'"aria-describedby="libelleHelp">'
+			echo '<input type="text" class="form-control" id="Fmax" value="'.$placeholders[3].'"aria-describedby="libelleHelp" name="Fmax">'
 		?>
 		<small id="FmaxHelp" class="form-text text-muted">Entrez Fmax (en pourcentage)</small>
 	</div>

@@ -12,7 +12,7 @@ class Parametre{
   private $_nb_points;
   private $_date_creation;
   private $_fic_img;
-  private $_fig_csv;
+  private $_fic_csv;
 
   public function __construct(array $data){
     $this->hydrate($data);
