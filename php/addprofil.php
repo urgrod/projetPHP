@@ -25,7 +25,7 @@
 <div class="container" id="input">
 	<div class="row  justify-content-md-center">
 	<div class="col-sm-6 col-sm-offset-3">
-	<form action="/php/addprofilscript.php" method="POST"><!--9 à remplacer par l'id du profil créé-->
+	<form action="/php/addprofilscript.php" method="get"><!--9 à remplacer par l'id du profil créé-->
 
 	<?php
 		$placeholders=array();

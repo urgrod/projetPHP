@@ -20,7 +20,6 @@
           $dataManager = new ParametreManager($db);
 
           $data = $dataManager->get($_GET['id']);
-
 	?>
 
 <div class="container mt-4" id="header">
@@ -33,7 +32,7 @@
 <div class="container" id="input">
 	<div class="row  justify-content-md-center">
 	<div class="col-sm-6 col-sm-offset-3">
-	<form action="/php/updateprofilscript.php" method="POST"><!--9 à remplacer par l'id du profil créé-->
+	<form action="/php/updateprofilscript.php" method="get"><!--9 à remplacer par l'id du profil créé-->
 
 	<?php
 		$placeholders=array();

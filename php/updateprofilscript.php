@@ -11,6 +11,9 @@ if (isset($_POST['libelle']) && isset($_POST['N']) && isset($_POST['corde']) && 
   $idparam = $_POST['id'];
   $fmax = $_POST['Fmax'];
 
+  $parametreManager = new ParametreManager($db);
+  $cambrureManager = new CambrureManager($db);
+
   $tmax_mm = $parametreManager->calculTmaxmm($parametre);
   $fmax_mm = $parametreManager->calculFmaxmm($parametre);
   $dateCreation = date('Y-m-d');
@@ -23,16 +26,17 @@ if (isset($_POST['libelle']) && isset($_POST['N']) && isset($_POST['corde']) && 
   $intra = $cambrureManager->calculYintra($f, $t, $nb_points);
   $extra = $cambrureManager->calculYextra($f, $t, $nb_points);
 
-$parametreManager = new ParametreManager($db);
-$cambrureManager = new CambrureManager($db);
 
 $parametre = new Parametre(['id' => $id, 'libelle' => $libelle, 'corde' => $corde, 'tmax_pourcent' => $Tmax, 'fmax_pourcent' => $Fmax, 'nb_points' => $nb_points, 'tmax_mm' =>$tmax_mm, 'fmax_mm' => $fmax_mm, 'date_creation' => $dateCreation,
  'fic_img' => $img, 'fic_csv' => $csv]);
- $cambrure = new Cambrure(['x' => $x, 't' => $t, 'f' => $f, 'yintra' => $intra, 'yextra' => $extra, 'igx' => $igx, 'id_parametre' => $idparam])
+ $cambrure = new Cambrure(['x' => $x, 't' => $t, 'f' => $f, 'yintra' => $intra, 'yextra' => $extra, 'igx' => $igx, 'id_parametre' => $idparam]);
 
 $parametreManager->update($parametre);
 $cambrureManager->update($cambrure);
 
-header('')
+// header('');
+}
+else {
+  echo "if non passe";
 }
 ?>

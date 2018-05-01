@@ -8,10 +8,10 @@
     <div class="collapse navbar-collapse" id="navbarsExample02">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="http://projetphp">Accueil <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="../index.php">Accueil <span class="sr-only">(current)</span></a>
             </li>
           <li class="nav-item">
-            <a class="nav-link" href="http://projetphp/php/addprofil.php">Ajouter un profil</a>
+            <a class="nav-link" href="../php/addprofil.php">Ajouter un profil</a>
           </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">

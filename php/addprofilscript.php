@@ -10,6 +10,9 @@ if (isset($_POST['libelle']) && isset($_POST['N']) && isset($_POST['corde']) && 
   $tmax = $_POST['Tmax'];
   $fmax = $_POST['Fmax'];
 
+  $parametreManager = new ParametreManager($db);
+  $cambrureManager = new CambrureManager($db);
+
   $tmax_mm = $parametreManager->calculTmaxmm($tmax, $corde);
   $fmax_mm = $parametreManager->calculFmaxmm($fmax, $corde);
   $dateCreation = date('Y-m-d');
@@ -24,16 +27,19 @@ if (isset($_POST['libelle']) && isset($_POST['N']) && isset($_POST['corde']) && 
   $csv = $parametreManager->generateCsv($libelle, $intra, $extra);
   $img = $parametreManager->generateImg($libelle, $intra, $extra);
 
-  $parametreManager = new ParametreManager($db);
-  $cambrureManager = new CambrureManager($db);
 
 $parametre = new Parametre(['libelle' => $libelle, 'corde' => $corde, 'tmax_pourcent' => $Tmax, 'fmax_pourcent' => $Fmax, 'nb_points' => $nb_points, 'tmax_mm' =>$tmax_mm, 'fmax_mm' => $fmax_mm, 'date_creation' => $dateCreation,
  'fic_img' => $img, 'fic_csv' => $csv]);
- $cambrure = new Cambrure(['x' => $x, 't' => $t, 'f' => $f, 'yintra' => $intra, 'yextra' => $extra, 'igx' => $igx, 'id_parametre' => $idparam])
+ $cambrure = new Cambrure(['x' => $x, 't' => $t, 'f' => $f, 'yintra' => $intra, 'yextra' => $extra, 'igx' => $igx, 'id_parametre' => $idparam]);
+
+ var_dump($parametre);
 
 $parametreManager->add($parametre);
 $cambrureManager->add($cambrure);
 
-header('')
+// header('');
+}
+else {
+  echo "if non valide";
 }
 ?>
