@@ -8,8 +8,8 @@ if (isset($_POST['libelle']) && isset($_POST['N']) && isset($_POST['corde']) && 
   $nb_points = $_POST['N'];
   $corde = $_POST['corde'];
   $tmax = $_POST['Tmax'];
-  $fmax = $_POST['Fmax'];
   $idparam = $_POST['id'];
+  $fmax = $_POST['Fmax'];
 
   $tmax_mm = $parametreManager->calculTmaxmm($parametre);
   $fmax_mm = $parametreManager->calculFmaxmm($parametre);
