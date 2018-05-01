@@ -161,8 +161,8 @@ class ParametreManager{
 
   public function getDbId(){
     $query = $this->_db->query("SELECT id FROM parametre ORDER BY id DESC");
-    $data = $query->fetch(PDO::FETCH_ASSOC)
-    return $data;
+    $data = $query->fetch(PDO::FETCH_ASSOC);
+    return $data[0];
   }
 }
 

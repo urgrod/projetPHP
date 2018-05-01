@@ -77,35 +77,35 @@ class Parametre{
     $this->_corde = $corde;
   }
 
-  public function setTmaxPourcent($tmax_pourcent){
+  public function setTmax_pourcent($tmax_pourcent){
     $this->_tmax_pourcent = $tmax_pourcent;
   }
 
-  public function setTmaxMm ($tmax_mm){
+  public function setTmax_mm ($tmax_mm){
     $this->_tmax_mm = $tmax_mm;
   }
 
-  public function setFmaxPourcent($fmax_pourcent){
+  public function setFmax_pourcent($fmax_pourcent){
     $this->_fmax_pourcent = $fmax_pourcent;
   }
 
-  public function setFmaxMm($fmax_mm){
+  public function setFmax_mm($fmax_mm){
     $this->_fmax_mm = $fmax_mm;
   }
 
-  public function setNbPoints($nb_points){
+  public function setNb_points($nb_points){
     $this->_nb_points = $nb_points;
   }
 
-  public function setDateCreation($date_creation){
+  public function setDate_creation($date_creation){
     $this->_date_creation = $date_creation;
   }
 
-  public function setFicImg($fic_img){
+  public function setFic_img($fic_img){
     $this->_fic_img = $fic_img;
   }
 
-  public function setFicCsv($fic_csv){
+  public function setFic_csv($fic_csv){
     $this->_fic_csv = $fic_csv;
   }
 
@@ -113,16 +113,18 @@ class Parametre{
     $this->_id_parametre = $id_parametre;
   }
 
+  public function hydrate(array $donnees){
 
-  public function hydrate(array $data){
-    foreach($data as $key => $value){
-      $method ='set'.ucfirst($key);
+    foreach ($donnees as $key => $value){
 
-      if(method_exist($this, $method)){
+      $method = 'set'.ucfirst($key);
+      if (method_exists($this, $method)){
+
         $this->$method($value);
-
       }
     }
   }
+
+
 }
 ?>
