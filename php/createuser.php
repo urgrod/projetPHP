@@ -32,7 +32,7 @@ if($EnteredUsername == $result['username']){
   header('Location:/php/signup.php?error=3');
 }
 
-$request = 'INSERT INTO `users` (`id_user`, `username`, `password`) VALUES (NULL,:EnteredUsername , :EnteredPassword);'
+$request = 'INSERT INTO `users` (`id_user`, `username`, `password`) VALUES (NULL,:EnteredUsername , :EnteredPassword)';
 $statement = $db->prepare($request);
 
 $statement->bindParam(":EnteredUsername", $EnteredUsername);
