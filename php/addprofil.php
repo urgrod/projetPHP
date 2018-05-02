@@ -15,7 +15,7 @@
 		
 		session_start();
             if(!isset($_SESSION["username"])){
-				header('Location:/login.php?error=0');
+				header('Location:/php/login.php?error=0');
 			}
 	?>
 

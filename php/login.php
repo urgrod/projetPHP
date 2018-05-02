@@ -17,7 +17,7 @@
           echo '<div id="errors" class="container mt-3"><div class="alert alert-danger"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span><strong>';
           switch($_GET['error']){
             case 0:
-            echo "Erreur:</strong>Vous devez vous connecter pour réaliser cette action";
+            echo "Attention: </strong>Vous devez vous connecter pour réaliser cette action";
             break;
             case 1:
               echo "Erreur:</strong> Un des champs était vide";
