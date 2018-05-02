@@ -33,7 +33,7 @@
 
                 $dataManager = new ParametreManager($db);
 
-                $data = $dataManager->getList();
+                $data = (isset($_POST["search"]))?$dataManager->getList($_POST["search"]):$dataManager->getList();
 
                     for ($i=0; $i < count($data); $i++) {
                         echo'<div class="col-md-3">';
