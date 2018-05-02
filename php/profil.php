@@ -18,7 +18,9 @@
       <?php
 
       include '../class/ParametreManager.php';
-      $db = new PDO('mysql:host=localhost;dbname=projet_php', 'root', '');
+      include_once($_SERVER["DOCUMENT_ROOT"]."/php/constants.php");
+
+      $db = new PDO('mysql:host='.DB_SERVER.';dbname='.DB_NAME, DB_USER, DB_PASSWORD);
 
       $dataManager = new ParametreManager($db);
 

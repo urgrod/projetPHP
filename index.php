@@ -28,12 +28,14 @@
                 <?php
                 //Faire des requetes bdd pour remplacer les valeurs
                 include_once($_SERVER["DOCUMENT_ROOT"]."/class/ParametreManager.php");
-                $db = new PDO('mysql:host=localhost;dbname=projet_php', 'root', '');
+                include_once($_SERVER["DOCUMENT_ROOT"]."/php/constants.php");
+
+                $db = new PDO('mysql:host='.DB_SERVER.';dbname='.DB_NAME, DB_USER, DB_PASSWORD);
 
                 $dataManager = new ParametreManager($db);
 
-                $data = (isset($_POST["search"]))?$dataManager->getList($_POST["search"]):$dataManager->getList();
-                //¸data = $dataManager->getList();
+                // $data = (isset($_POST["search"]))?$dataManager->getList($_POST["search"]):$dataManager->getList();
+                $data = $dataManager->getList();
                     for ($i=0; $i < count($data); $i++) {
                         echo'<div class="col-md-3">';
                         echo'<div class="item">';

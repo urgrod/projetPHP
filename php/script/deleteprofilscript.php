@@ -2,8 +2,9 @@
 
 include '../../class/ParametreManager.php';
 include '../../class/CambrureManager.php';
+include_once($_SERVER["DOCUMENT_ROOT"]."/php/constants.php");
 
-$db = new PDO('mysql:host=localhost;dbname=projet_php', 'root', '');
+$db = new PDO('mysql:host='.DB_SERVER.';dbname='.DB_NAME, DB_USER, DB_PASSWORD);
 
 if (isset($_GET['id'])) {
   $id = $_GET['id'];
