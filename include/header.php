@@ -14,7 +14,14 @@
             <a class="nav-link" href="../php/addprofil.php">Ajouter un profil</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/php/login.php">Connexion</a>
+            <?php
+                session_start();
+                if(isset($_SESSION["username"])){
+                    echo '<a class="nav-link" href="/php/script/disconnect.php">Déconnexion</a>';
+                }else{
+                    echo '<a class="nav-link" href="/php/login.php">Connexion</a>';
+                }
+            ?>
           </li>
         </ul>
         <form class="form-inline my-2 my-lg-0" method="get">
