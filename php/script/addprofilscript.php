@@ -43,7 +43,7 @@ $cambrureManager->add($dx, $t, $f, $intra, $extra, $igx, $idparam, $nb_points);
 
 
 
-// header('Location: ../profil.php?id='.$idparam['id']);
+header('Location: ../profil.php?id='.$idparam['id']);
 }
 else {
   echo "if non valide";

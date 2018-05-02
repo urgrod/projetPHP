@@ -19,12 +19,11 @@ class CambrureManager
   }
   public function add($dx, $t, $f, $intra, $extra, $igx, $id, $nb_pts){
 
-    $igx =0;
     $x=0;
     for ($i=0; $i < $nb_pts; $i++) {
 
 
-      $sql = "INSERT INTO cambrure (id, x, t, f, yintra, yextra, lgx, id_parametre) VALUES (NULL, $x, $t[$i], $f[$i], $intra[$i], $extra[$i], $igx, $id)";
+      $sql = "INSERT INTO cambrure (id, x, t, f, yintra, yextra, lgx, id_parametre) VALUES (NULL, $x, $t[$i], $f[$i], $intra[$i], $extra[$i], $igx[$i], $id)";
       $query = $this->_db->prepare($sql);
       $query->execute();
 
@@ -148,6 +147,8 @@ class CambrureManager
 
       $x = $x + $dx;
     }
+
+    return $array;
   }
 
 }
