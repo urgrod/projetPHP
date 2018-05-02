@@ -16,7 +16,7 @@ present "/sql/sql.sql"
 ## Contributors
 
 Alexandre Bordelai-Moigne, alexandre.bordelai-moigne@isen-ouest.yncrea.fr, https://github.com/azeaza
-#Gurvan Le Cam, lecam.gurvan@gmail.com, https://github.com/urgrod
+>Gurvan Le Cam, lecam.gurvan@gmail.com, https://github.com/urgrod
 ## License
 
 Apache
