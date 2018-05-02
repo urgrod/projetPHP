@@ -28,7 +28,7 @@
             <div class="row">
                 <?php
                 //Faire des requetes bdd pour remplacer les valeurs
-                include '/class/ParametreManager.php';
+                include_once($_SERVER["DOCUMENT_ROOT"]."/class/ParametreManager.php");
                 $db = new PDO('mysql:host=localhost;dbname=projet_php', 'root', '');
 
                 $dataManager = new ParametreManager($db);
