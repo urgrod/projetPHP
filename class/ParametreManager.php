@@ -152,7 +152,7 @@ class ParametreManager{
     $extra->SetLegend('Extrados');
 
     $graph->legend->SetFrameWeight(1);
-    $graph->Stroke();
+    // $graph->Stroke();
     $graph->Stroke('../../img/'.$nom.'-'.$id.'.png');
 
     return $nom.'-'.$id.'.png';
