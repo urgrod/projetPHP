@@ -17,19 +17,20 @@ class CambrureManager
   public function setDb($db){
     $this->_db = $db;
   }
-  public function add(Cambrure $cambrure){
+  public function add($dx, $t, $f, $intra, $extra, $igx, $id, $nb_pts){
 
-    $query = $this->_db->prepare('INSERT INTO cambrure (id, x, t, yintra, yextra, lgx, id_parametre) VALUES (NULL, :x, :t, :f, :yintra, :yextra, :lgx, :id_parametre)');
+    $igx =0;
+    $x=0;
+    for ($i=0; $i < $nb_pts; $i++) {
 
-    $query->bindValue(":x", $cambrure->x());
-    $query->bindValue(":t", $cambrure->t());
-    $query->bindValue(":f", $cambrure->f());
-    $query->bindValue(":yintra", $cambrure->yintra());
-    $query->bindValue(":yextra", $cambrure->yextra());
-    $query->bindValue(":lgx", $cambrure->igx());
-    $query->bindValue(":id_parametre", $cambrure->id_parametre());
 
-    $query->execute();
+      $sql = "INSERT INTO cambrure (id, x, t, f, yintra, yextra, lgx, id_parametre) VALUES (NULL, $x, $t[$i], $f[$i], $intra[$i], $extra[$i], $igx, $id)";
+      $query = $this->_db->prepare($sql);
+      $query->execute();
+
+      $x = $x + $dx;
+    }
+
   }
 
   public function delete(Cambrure $cambrure){
@@ -80,9 +81,8 @@ class CambrureManager
     for ($x=0; $x <$nb_pts ; $x++) {
       $valF = $f[$x];
       $valT = $t[$x];
-      // $calcul = ($valT + $valF);
-      $calcul=0;
-      $array[] = array($calcul);
+      $calcul = ($valT + $valF);
+      $array[] = $calcul;
     }
     return $array;
 
@@ -93,36 +93,48 @@ class CambrureManager
     for ($x=0; $x <$nb_pts ; $x++) {
       $valF = $f[$x];
       $valT = $t[$x];
-      // $calcul = ($valT - $valF);
-      $calcul =0;
-      $array[] = array($calcul);
+      $calcul = ($valT - $valF);
+      $array[] = $calcul;
     }
     return $array;
 
   }
 
-  public function calculT( $nb_pts, $tmax, $corde){
+  public function calculT($dx, $nb_pts, $tmax, $corde){
 
-    for ($x=0; $x <$nb_pts  ; $x++) {
-      $epaisseur  = -(1.015*$x/$corde)^4 -2.843*($x/$corde)^3 + 3.516*($x/$corde)^2 +1.26*($x/$corde) - 2.969*($x/$corde)^(0.5)*$tmax;
-      $array[] = array($epaisseur);
+    $x=0;
+
+    for ($i=0; $i <$nb_pts  ; $i++) {
+      $epaisseur = -(1.015*pow(($x/$corde), 4) -2.843*pow(($x/$corde), 3) +3.516*pow(($x/$corde), 2) - 2.969*pow(($x/$corde), 0.5))*$tmax;
+      $array[] = $epaisseur;
+
+      $x = $x + $dx;
     }
 
     return $array;
 
   }
 
-  public function calculF( $fmax,  $nb_pts, $corde){
+  public function calculF($dx, $fmax,  $nb_pts, $corde){
 
-    // var_dump($fmax);
-    for ($x=0; $x < $nb_pts; $x++) {
-      $f = -4*(($x/$corde)^2 - ($x/$corde)).$fmax;
-      $array[] = (int)$f;
+    $x=0;
+
+    for ($i=0; $i < $nb_pts; $i++) {
+      $f = -4*(pow(($x/$corde), 2) - ($x/$corde))*$fmax;
+      $array[] = $f;
+
+      $x = $x + $dx;
     }
-    // var_dump($array);
 
     return $array;
   }
+
+  public function deleteParam($id){
+
+    $this->_db->exec("DELETE FROM cambrure WHERE id_parametre =".$id);
+
+  }
+
 }
 
 

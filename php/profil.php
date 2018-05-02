@@ -49,7 +49,7 @@
           </td>
 
           <td>
-            <form action="deleteProfil.php" method="get" id="deleteProfil">
+            <form action="script/deleteprofilscript.php" method="get" id="deleteProfil">
               <?php
                 echo '<input id="idProfil" name="id" type="hidden" value="'.$_GET['id'].'">';
               ?>

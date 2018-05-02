@@ -12,7 +12,7 @@ fait          sur chaque page, utilisation d’un en-tête et d’un pied de pag
 • pour chaque enregistrement, prévoir :
 fait         ◦ un lien permettant de gérer la modification des paramètres et relancer
                     la génération des points
-a faire, methode deja ecrite     ◦ un lien permettant la suppression des données associées à cet
+fait     ◦ un lien permettant la suppression des données associées à cet
                                                 enregistrement avec un message de confirmation avant la
                                                 suppression
 fait      • sauvegarder les fichiers générés (image et csv) et les rattacher à
@@ -22,3 +22,4 @@ fait      • sauvegarder les fichiers générés (image et csv) et les rattache
 calculer le igx dans la cambrure -> j'ai pas trouve la formule
 
 utiliser la methode $parametreManager->getDbImg($id);, retourne le nom de l'image qu'il faut afficher
+rajouter une confirmation avant la suppression d'un profil --> deleteProfil.php

@@ -35,9 +35,9 @@ class ParametreManager{
 
   }
 
-  public function delete(Parametre $parametre){
+  public function delete($id){
 
-    $this->_db->exec("DELETE FROM parametre WHERE id =".$parametre->id());
+    $this->_db->exec("DELETE FROM parametre WHERE id =".$id);
   }
 
   public function get($id){
@@ -90,29 +90,29 @@ class ParametreManager{
 
   public function calculTmaxmm($tmax_pourcent, $corde){
 
-    return $tmax_pourcent*$corde;
+    return ($tmax_pourcent*$corde)/100;
   }
 
   public function calculFmaxmm($fmax_pourcent, $corde){
 
-    return $fmax_pourcent*$corde;
+    return ($fmax_pourcent*$corde)/100;
   }
 
   public function generateCsv($nom, $intraArray, $extraArray){
 
-    // for ($i=0; $i<sizeof($intraArray); $i++) {
-    //   $lignes[] = array($i, $intraArray[$i], $extraArray[$i]);
-    // }
-    //
-    // $path = '../csv/'.$nom.'.csv';
-    // $separateur = ',';
-    // $file = fopen($path, 'w+');
-    //
-    // foreach ($lignes as $ligne) {
-    //   fputcsv($file, $ligne, $separateur);
-    // }
-    //
-    // fclose($file);
+    for ($i=0; $i<sizeof($intraArray); $i++) {
+      $lignes[] = array($i, $intraArray[$i], $extraArray[$i]);
+    }
+
+    $path = '../csv/'.$nom.'.csv';
+    $separateur = ',';
+    $file = fopen($path, 'w+');
+
+    foreach ($lignes as $ligne) {
+      fputcsv($file, $ligne, $separateur);
+    }
+
+    fclose($file);
 
     return $nom.'.csv';
   }
