@@ -15,7 +15,7 @@
 	?>
 <div class="container">
 
-<form class="form-signin w-25 mx-auto mt-5">
+<form class="form-signin w-25 mx-auto mt-5" action="#" method="post"><!-- A voir comment on gère la redirection-->
   <h2 class="form-signin-heading">Connectez-vous</h2>
   <label for="inputEmail" class="sr-only">Adresse mail</label>
   <input type="email" id="inputEmail" class="form-control" placeholder="Adresse mail" required="" autofocus="">
