@@ -19,7 +19,8 @@ fait      • sauvegarder les fichiers générés (image et csv) et les rattache
                       l’enregistrement réalisé
 
 
-calculer le igx dans la cambrure -> j'ai pas trouve la formule
 
+calculer le igx dans la cambrure -> j'ai pas trouve la formule
 utiliser la methode $parametreManager->getDbImg($id);, retourne le nom de l'image qu'il faut afficher
 rajouter une confirmation avant la suppression d'un profil --> deleteProfil.php
+csv fait mais a verifier si ca marche bien

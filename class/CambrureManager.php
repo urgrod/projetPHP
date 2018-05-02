@@ -33,9 +33,9 @@ class CambrureManager
 
   }
 
-  public function delete(Cambrure $cambrure){
+  public function delete($idparam){
 
-    $this->_db->exec("DELETE FROM cambrure WHERE id =".$cambrure->id());
+    $this->_db->exec("DELETE FROM cambrure WHERE id_parametre =".$idparam);
 
   }
 
@@ -81,7 +81,7 @@ class CambrureManager
     for ($x=0; $x <$nb_pts ; $x++) {
       $valF = $f[$x];
       $valT = $t[$x];
-      $calcul = ($valT + $valF);
+      $calcul = ($f[$x] - ($t[$x]/2));
       $array[] = $calcul;
     }
     return $array;
@@ -90,13 +90,13 @@ class CambrureManager
 
   public function calculYextra( $f,  $t,  $nb_pts){
 
-    for ($x=0; $x <$nb_pts ; $x++) {
-      $valF = $f[$x];
-      $valT = $t[$x];
-      $calcul = ($valT - $valF);
-      $array[] = $calcul;
-    }
-    return $array;
+        for ($x=0; $x <$nb_pts ; $x++) {
+          $valF = $f[$x];
+          $valT = $t[$x];
+          $calcul = ($f[$x] + ($t[$x]/2));
+          $array[] = $calcul;
+        }
+        return $array;
 
   }
 
@@ -120,7 +120,8 @@ class CambrureManager
     $x=0;
 
     for ($i=0; $i < $nb_pts; $i++) {
-      $f = -4*(pow(($x/$corde), 2) - ($x/$corde))*$fmax;
+      $div = $x /$corde;
+      $f = -4*(pow($div, 2) - $div)*$fmax;
       $array[] = $f;
 
       $x = $x + $dx;
@@ -133,6 +134,20 @@ class CambrureManager
 
     $this->_db->exec("DELETE FROM cambrure WHERE id_parametre =".$id);
 
+  }
+
+  public function calculIgx($dx, $intra, $extra, $nb_pts){
+
+    $x =0;
+
+    for ($i=0; $i <$nb_pts ; $i++) {
+      $e = ($intra[$i] + $extra[$i])/2;
+      $igz = ($x*pow($e, 3))/12;
+
+      $array[] = $igz;
+
+      $x = $x + $dx;
+    }
   }
 
 }

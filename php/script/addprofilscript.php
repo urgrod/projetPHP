@@ -26,10 +26,11 @@ if (isset($_POST['libelle']) || isset($_POST['N']) || isset($_POST['corde']) || 
   $f = $cambrureManager->calculF($dx, $fmax_mm, $nb_points, $corde);
   $intra = $cambrureManager->calculYintra($f, $t, $nb_points);
   $extra = $cambrureManager->calculYextra($f, $t, $nb_points);
-  $igx =0;
+  $igx = $cambrureManager->calculIgx($dx, $intra, $extra, $nb_points);
 
-  $csv = $parametreManager->generateCsv($libelle, $intra, $extra);
-  $img = $parametreManager->generateImg($libelle, $intra, $extra);
+  $csv = $parametreManager->generateCsv($libelle, $intra, $extra, $idparam);
+  $img = $parametreManager->generateImg($libelle, $intra, $extra, $idparam);
+
 
 
 $parametre = new Parametre(['libelle' => $libelle, 'corde' => $corde, 'tmax_pourcent' => $tmax, 'fmax_pourcent' => $fmax, 'nb_points' => $nb_points, 'tmax_mm' =>$tmax_mm, 'fmax_mm' => $fmax_mm, 'date_creation' => $dateCreation,
@@ -40,13 +41,9 @@ $parametre = new Parametre(['libelle' => $libelle, 'corde' => $corde, 'tmax_pour
 $parametreManager->add($parametre);
 $cambrureManager->add($dx, $t, $f, $intra, $extra, $igx, $idparam, $nb_points);
 
-$id = $parametreManager->getDbId();
 
 
-
-
-
-header('Location: ../profil.php?id='.$id['id']);
+// header('Location: ../profil.php?id='.$idparam['id']);
 }
 else {
   echo "if non valide";
