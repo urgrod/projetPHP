@@ -34,7 +34,7 @@ if(isset($_POST["username"]) && isset($_POST["password"])){
     
     if($EnteredPassword == $result["password"]){
       session_start();
-      $_SESSION['username'] = $_POST['username'];
+      $_SESSION['username'] = $EnteredUsername;
       header('Location:/php/addprofil.php');
       exit();
     }
