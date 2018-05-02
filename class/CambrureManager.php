@@ -1,7 +1,7 @@
 <?php
 
 /**
-*
+* Classe permettant de manipuler les donnees de la classe "cambrure"
 */
 
 include 'Cambrure.php';
@@ -9,14 +9,39 @@ include 'Cambrure.php';
 class CambrureManager
 {
 
+  /*
+  Constrcuteur de la classe
+  entree: requete PDO
+  sortie: ---
+  */
   function __construct($db)
   {
     $this->setDb($db);
   }
 
+
+  /*
+  initialise la conection a la base de donnees
+  entree: requete PDO
+  sortie: ---
+  */
   public function setDb($db){
     $this->_db = $db;
   }
+
+
+  /*
+  methode pour enrengistrer en base les valeurs des cambrures
+  entree: - la valeur de dx
+  - les valeurs de l'epaisseur pour chaque valeur de x
+  - les valeurs de la cambrure pour chaque valeur de x
+  - les valeurs de l'intrados pour chaque valeur de x
+  - les valeurs de l'extrados pour chaque valeur de x
+  - les valeurs de l'igx pour chaque valeur de x
+  - la valeur de l'id des parametres permettant d'obtenir ces valeurs
+  - le nombre de points sur cette cambrure
+  sortie: ---
+  */
   public function add($dx, $t, $f, $intra, $extra, $igx, $id, $nb_pts){
 
     $x=0;
@@ -32,20 +57,35 @@ class CambrureManager
 
   }
 
+  /*
+  methode pour supprimer les valeurs d'un profil complet
+  entree: - id du parametre qui a genere cette cambrure
+  sortie: ---
+  */
   public function delete($idparam){
 
     $this->_db->exec("DELETE FROM cambrure WHERE id_parametre =".$idparam);
 
   }
 
+  /*
+  methode permettant d'obtenir les valeurs correspondant a 1 cambrure
+  entree: - valeurs de l'id de la cambrure que l'on cherche
+  sortie: - Cambrure contenant toutes les infos de la cambrure voulue
+  */
   public function get($id){
 
-    $query = $this->_db->query("SELECT * FROM parametre WHERE id=".$id);
+    $query = $this->_db->query("SELECT * FROM cambrure WHERE id=".$id);
     $data = $query->fetch(PDO::FETCH_ASSOC);
 
     return new Cambrure($data);
   }
 
+  /*
+  methode permettant d'obtenir toutes les cambrures de la table
+  entree: ---
+  sortie: tableau de Cambrures contenant toutes les infos de chaque cambrure
+  */
   public function getList(){
 
     $cambrures = [];
@@ -58,6 +98,12 @@ class CambrureManager
 
     return $cambures;
   }
+
+  /*
+  methode permettant de mettre a jour toutes les cambrures voulues
+  entree:
+  sortie: ---
+  */
 
   public function update(Cambrure $cambrure){
 

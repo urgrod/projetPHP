@@ -1,7 +1,8 @@
 <?php
 
 /**
-*
+* Classe comprenant seulement les getters, les setters ainsi qu'une methode d'hydratation
+* Chaque attribut correspond a un champ dans la table "cambrure" dans la base de donnees 
 */
 class Cambrure
 {
