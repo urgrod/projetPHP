@@ -51,7 +51,7 @@
         <tr>
           <td>
               <?php
-                echo '<a href="../csv/'.$data->fic_csv().'">Exporter en CSV</a>';
+                echo '<a href="../csv/'.$data->fic_csv().'"><button type="button" class="btn btn-success">Exporter en CSV</button></a>';
               ?>
 
           </td>
@@ -62,7 +62,8 @@
 
           <td>
               <?php
-                echo '<a href="../img/'.$data->fic_img().'">Exporter l&#145image</a>';
+                echo '<a download="'.$data->fic_img().'" href="../img/'.$data->fic_img().'"><button type="button" class="btn btn-info">Exporter le graph</button></a>';
+                //echo '<a href="../img/'.$data->fic_img().'">Exporter l&#145image</a>';
               ?>
 
           </td>
