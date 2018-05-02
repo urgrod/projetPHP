@@ -8,9 +8,7 @@ Ce projet correspond à une évaluation de fin d'année en Php afin d'Évaluer n
 
 ## Installation
 
-Pour installer ce projet il suffit de creer son virtualhost et d'y ajouter le code source. Les constantes de connexion a la base de donnees se trouve dans
-le fichier "/php/constants.php". Il suffit de remplacer les valeurs pour se connecter a la base de donnees que vous aurez generez grace au fichiers sql
-present "/sql/sql.sql"
+Pour installer ce projet il suffit de creer son virtualhost et d'y ajouter le code source. Les constantes de connexion a la base de données se trouvent dans le fichier "/php/constants.php". Il suffit de remplacer les valeurs pour se connecter à la base de données que vous aurez generez grace aux fichiers Sql présent "/sql/sql.sql"
 
 
 ## Contributors
