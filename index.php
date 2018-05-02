@@ -26,7 +26,6 @@
         <div class="col-sm-12" id="gallery">
             <div class="row">
                 <?php
-                //Faire des requetes bdd pour remplacer les valeurs
                 include_once($_SERVER["DOCUMENT_ROOT"]."/class/ParametreManager.php");
                 include_once($_SERVER["DOCUMENT_ROOT"]."/php/constants.php");
 
@@ -34,8 +33,8 @@
 
                 $dataManager = new ParametreManager($db);
 
-                $data = (isset($_POST["search"]))?$dataManager->getList($_POST["search"]):$dataManager->getList();
-                // $data = $dataManager->getList();
+                //$data = (isset($_POST["search"]))?$dataManager->getList($_POST["search"]):$dataManager->getList();
+                 $data = $dataManager->getList();
                     for ($i=0; $i < count($data); $i++) {
                         echo'<div class="col-md-3">';
                         echo'<div class="item">';
