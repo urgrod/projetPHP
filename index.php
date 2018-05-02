@@ -8,7 +8,6 @@
     <?php
         include_once($_SERVER["DOCUMENT_ROOT"]."/include/includes.php");
     ?>
-    <script src="main.js"></script>
 </head>
 <body class="bg-light mb-5">
     <?php
