@@ -8,7 +8,6 @@
     <?php
         include_once($_SERVER["DOCUMENT_ROOT"]."/include/includes.php");
     ?>
-    <script src="main.js"></script>
 </head>
 <body class="bg-light mb-5">
     <?php
@@ -28,13 +27,13 @@
             <div class="row">
                 <?php
                 //Faire des requetes bdd pour remplacer les valeurs
-                include '/class/ParametreManager.php';
+                include_once($_SERVER["DOCUMENT_ROOT"]."/class/ParametreManager.php");
                 $db = new PDO('mysql:host=localhost;dbname=projet_php', 'root', '');
 
                 $dataManager = new ParametreManager($db);
 
-                $data = $dataManager->getList();
-
+                $data = (isset($_POST["search"]))?$dataManager->getList($_POST["search"]):$dataManager->getList();
+                //¸data = $dataManager->getList();
                     for ($i=0; $i < count($data); $i++) {
                         echo'<div class="col-md-3">';
                         echo'<div class="item">';
