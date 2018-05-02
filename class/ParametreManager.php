@@ -104,7 +104,8 @@ class ParametreManager{
       $lignes[] = array($i, $intraArray[$i], $extraArray[$i]);
     }
 
-    $path = '../csv/'.$nom.'.csv';
+    $path = $_SERVER["DOCUMENT_ROOT"]."/csv/".$nom.".csv";
+    echo $path;
     $separateur = ',';
     $file = fopen($path, 'w+');
 
@@ -119,40 +120,41 @@ class ParametreManager{
 
   public function generateImg($nom, $intraArray, $extraArray){
 
-    // require_once ('../jpgraph-4.2.0/jpgraph.php');
-    // require_once ('../jpgraph-4.2.0/jpgraph_line.php');
-    //
-    // $graph = new Graph(300, 250);
-    //
-    // $theme_class = new UniversalTheme;
-    // $graph->setTheme($theme_class);
-    // $graph->img->SetAntiAliasing(false);
-    // $graph->title->Set($nom);
-    // $graph->SetBox(false);
-    //
-    // $graph->img->SetAntiAliasing();
-    //
-    // $graph->yaxis->HideZeroLabel();
-    // $graph->yaxis->HideLine(false);
-    // $graph->yaxis->HideTicks(false,false);
-    //
-    // $graph->xgrid->Show();
-    // $graph->xgrid->SetLineStyle("solid");
-    // $graph->xgrid->SetColor('#E3E3E3');
-    //
-    // $intra = new LinePlot($intraArray);
-    // $graph->Add($intra);
-    // $intra->SetColor("#6495ED");
-    // $intra->SetLegend('Intrados');
-    //
-    // $extra = new LinePlot($extraArray);
-    // $grpah->Add($extra);
-    // $extra->SetColor("#6495ED");
-    // $intra->SetLegend('Extrados');
-    //
-    // $graph->legend->SetFrameWeight(1);
-    // // $graph->Stroke();
-    // $graph->Stroke('../img/'.$nom.'.png');
+    require_once ($_SERVER["DOCUMENT_ROOT"]."/jpgraph-4.2.0/src/jpgraph.php");
+    require_once ($_SERVER["DOCUMENT_ROOT"]."/jpgraph-4.2.0/src/jpgraph_line.php");
+    
+    $graph = new Graph(300, 250);
+    
+    $theme_class = new UniversalTheme;
+    $graph->SetScale("linlin",0,0,0,0);
+    $graph->setTheme($theme_class);
+    $graph->img->SetAntiAliasing(false);
+    $graph->title->Set($nom);
+    $graph->SetBox(false);
+    
+    $graph->img->SetAntiAliasing();
+    
+    $graph->yaxis->HideZeroLabel();
+    $graph->yaxis->HideLine(false);
+    $graph->yaxis->HideTicks(false,false);
+    
+    $graph->xgrid->Show();
+    $graph->xgrid->SetLineStyle("solid");
+    $graph->xgrid->SetColor('#E3E3E3');
+    
+    $intra = new LinePlot($intraArray);
+    $graph->Add($intra);
+    $intra->SetColor("#6495ED");
+    $intra->SetLegend('Intrados');
+    
+    $extra = new LinePlot($extraArray);
+    $graph->Add($extra);
+    $extra->SetColor("#6495ED");
+    $intra->SetLegend('Extrados');
+    
+    $graph->legend->SetFrameWeight(1);
+    $graph->Stroke();
+    //$graph->Stroke('/img/'.$nom.'.png');
 
     return $nom.'.png';
   }
