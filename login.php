@@ -15,7 +15,7 @@
 	?>
 <div class="container">
 
-<form class="form-signin w-25 mx-auto mt-5" action="#" method="post"><!-- A voir comment on gère la redirection-->
+<form class="form-signin w-25 mx-auto mt-5 text-center" action="#" method="post"><!-- A voir comment on gère la redirection-->
   <h2 class="form-signin-heading">Connectez-vous</h2>
   <label for="inputEmail" class="sr-only">Adresse mail</label>
   <input type="email" id="inputEmail" class="form-control" placeholder="Adresse mail" required="" autofocus="">
@@ -26,7 +26,13 @@
       <input type="checkbox" value="remember-me"> Se souvenir de moi
     </label>
   </div>
-  <button class="btn btn-lg btn-primary btn-block" type="submit">Connexion</button>
+
+  <div class="text-center">
+    <button class="btn btn-lg btn-primary btn-block w-50" type="submit">Connexion</button>
+  </div>
+  <div class="login-help">
+		<a href="#">S'inscrire</a> - <a href="#">Mot de passe oublié</a>
+	</div>
 </form>
 
 </div>
