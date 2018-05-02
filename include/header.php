@@ -14,7 +14,7 @@
             <a class="nav-link" href="../php/addprofil.php">Ajouter un profil</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../login.php">Connexion</a>
+            <a class="nav-link" href="/php/login.php">Connexion</a>
           </li>
         </ul>
         <form class="form-inline my-2 my-lg-0" method="get">
