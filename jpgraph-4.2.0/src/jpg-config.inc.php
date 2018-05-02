@@ -137,7 +137,6 @@ define('SUPERSAMPLING_SCALE', 1);
 
 
 
-<<<<<<< HEAD
 // define('ANTIALIASING', false);
 //
 // if(!ANTIALIASING){
@@ -145,15 +144,6 @@ define('SUPERSAMPLING_SCALE', 1);
 //         return true;
 //     }
 // }
-=======
-define('ANTIALIASING', false);
-/*
-if(!ANTIALIASING){
-    function imageantialias($image, $enabled){
-        return true;
-    }
-}*/
->>>>>>> ba0ad3cd1e70a0d456ede21fceaa0013e18e8ea0
 
 
 ?>

@@ -104,12 +104,7 @@ class ParametreManager{
       $lignes[] = array($i, $intraArray[$i], $extraArray[$i], );
     }
 
-<<<<<<< HEAD
     $path = '../../csv/'.$nom.'-'.$id.'.csv';
-=======
-    $path = $_SERVER["DOCUMENT_ROOT"]."/csv/".$nom.".csv";
-    echo $path;
->>>>>>> ba0ad3cd1e70a0d456ede21fceaa0013e18e8ea0
     $separateur = ',';
     $file = fopen($path, 'w+');
 
@@ -122,11 +117,10 @@ class ParametreManager{
     return $nom.'-'.$id.'.csv';
   }
 
-<<<<<<< HEAD
   public function generateImg($nom, $intraArray, $extraArray, $id){
 
-    require_once ('../../jpgraph-4.2.0/src/jpgraph.php');
-    require_once ('../../jpgraph-4.2.0/src/jpgraph_line.php');
+    require_once ($_SERVER["DOCUMENT_ROOT"]."/jpgraph-4.2.0/src/jpgraph.php");
+    require_once ($_SERVER["DOCUMENT_ROOT"]."/jpgraph-4.2.0/src/jpgraph_line.php");
 
     $graph = new Graph(500, 500);
 
@@ -162,48 +156,8 @@ class ParametreManager{
     $graph->Stroke('../../img/'.$nom.'-'.$id.'.png');
 
     return $nom.'-'.$id.'.png';
-=======
-  public function generateImg($nom, $intraArray, $extraArray){
+}
 
-    require_once ($_SERVER["DOCUMENT_ROOT"]."/jpgraph-4.2.0/src/jpgraph.php");
-    require_once ($_SERVER["DOCUMENT_ROOT"]."/jpgraph-4.2.0/src/jpgraph_line.php");
-    
-    $graph = new Graph(300, 250);
-    
-    $theme_class = new UniversalTheme;
-    $graph->SetScale("linlin",0,0,0,0);
-    $graph->setTheme($theme_class);
-    $graph->img->SetAntiAliasing(false);
-    $graph->title->Set($nom);
-    $graph->SetBox(false);
-    
-    $graph->img->SetAntiAliasing();
-    
-    $graph->yaxis->HideZeroLabel();
-    $graph->yaxis->HideLine(false);
-    $graph->yaxis->HideTicks(false,false);
-    
-    $graph->xgrid->Show();
-    $graph->xgrid->SetLineStyle("solid");
-    $graph->xgrid->SetColor('#E3E3E3');
-    
-    $intra = new LinePlot($intraArray);
-    $graph->Add($intra);
-    $intra->SetColor("#6495ED");
-    $intra->SetLegend('Intrados');
-    
-    $extra = new LinePlot($extraArray);
-    $graph->Add($extra);
-    $extra->SetColor("#6495ED");
-    $intra->SetLegend('Extrados');
-    
-    $graph->legend->SetFrameWeight(1);
-    $graph->Stroke();
-    //$graph->Stroke('/img/'.$nom.'.png');
-
-    return $nom.'.png';
->>>>>>> ba0ad3cd1e70a0d456ede21fceaa0013e18e8ea0
-  }
 
   public function getDbId(){
     $query = $this->_db->query("SELECT id FROM parametre ORDER BY id DESC");
