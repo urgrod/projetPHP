@@ -77,6 +77,8 @@ class CambrureManager
 
   public function calculYintra( $f,  $t,  $nb_pts){
 
+    $array = array();
+
     for ($x=0; $x <$nb_pts ; $x++) {
       $valF = $f[$x];
       $valT = $t[$x];
@@ -89,22 +91,26 @@ class CambrureManager
 
   public function calculYextra( $f,  $t,  $nb_pts){
 
-        for ($x=0; $x <$nb_pts ; $x++) {
-          $valF = $f[$x];
-          $valT = $t[$x];
-          $calcul = ($f[$x] + ($t[$x]/2));
-          $array[] = $calcul;
-        }
-        return $array;
+    $array = array();
+
+    for ($x=0; $x <$nb_pts ; $x++) {
+      $valF = $f[$x];
+      $valT = $t[$x];
+      $calcul = ($f[$x] + ($t[$x]/2));
+      $array[] = $calcul;
+    }
+    return $array;
 
   }
 
   public function calculT($dx, $nb_pts, $tmax, $corde){
 
     $x=0;
+    $array = array();
 
     for ($i=0; $i <$nb_pts  ; $i++) {
-      $epaisseur = -(1.015*pow(($x/$corde), 4) -2.843*pow(($x/$corde), 3) +3.516*pow(($x/$corde), 2) - 2.969*pow(($x/$corde), 0.5))*$tmax;
+      $div = $x/$corde;
+      $epaisseur = -1*(1.015*pow($div, 4) -2.843*pow($div, 3) +3.516*pow($div, 2) +1.26*($div) - 2.969*pow($div, 0.5))*$tmax;
       $array[] = $epaisseur;
 
       $x = $x + $dx;
@@ -114,9 +120,10 @@ class CambrureManager
 
   }
 
-  public function calculF($dx, $fmax,  $nb_pts, $corde){
+  public function calculF($dx, $nb_pts, $fmax, $corde){
 
     $x=0;
+    $array = array();
 
     for ($i=0; $i < $nb_pts; $i++) {
       $div = $x /$corde;

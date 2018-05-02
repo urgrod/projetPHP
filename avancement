@@ -19,6 +19,6 @@ fait      • sauvegarder les fichiers générés (image et csv) et les rattache
                       l’enregistrement réalisé
 
 
-
-rajouter une confirmation avant la suppression d'un profil --> deleteProfil.php
-csv fait mais a verifier si ca marche bien
+finaliser le graphique de la cambrure
+faire l'authentification
+faire la recherche des profils

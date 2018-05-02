@@ -51,7 +51,22 @@
           </td>
 
           <td>
-            <form action="script/deleteprofilscript.php" method="get" id="deleteProfil">
+            <a>&nbsp&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp&nbsp</a>
+          </td>
+
+          <td>
+              <?php
+                echo '<a href="../img/'.$data->fic_img().'">Exporter l&#145image</a>';
+              ?>
+
+          </td>
+
+          <td>
+            <a>&nbsp&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp&nbsp</a>
+          </td>
+
+          <td>
+            <form action="deleteprofil.php" method="get" id="deleteProfil">
               <?php
                 echo '<input id="idProfil" name="id" type="hidden" value="'.$_GET['id'].'">';
               ?>

@@ -24,7 +24,7 @@ if (isset($_POST['libelle']) || isset($_POST['N']) || isset($_POST['corde']) || 
 
   $dx = $corde/$nb_points;
   $t = $cambrureManager->calculT($dx, $nb_points, $tmax_mm, $corde);
-  $f = $cambrureManager->calculF($dx, $fmax_mm, $nb_points, $corde);
+  $f = $cambrureManager->calculF($dx, $nb_points, $fmax_mm, $corde);
   $intra = $cambrureManager->calculYintra($f, $t, $nb_points);
   $extra = $cambrureManager->calculYextra($f, $t, $nb_points);
   $igx = $cambrureManager->calculIgx($dx, $intra, $extra, $nb_points);
@@ -44,7 +44,7 @@ $cambrureManager->add($dx, $t, $f, $intra, $extra, $igx, $idparam, $nb_points);
 
 
 
-header('Location: ../profil.php?id='.$idparam['id']);
+// header('Location: ../profil.php?id='.$idparam);
 }
 else {
   echo "if non valide";
