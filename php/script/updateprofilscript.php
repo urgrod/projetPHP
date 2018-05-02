@@ -6,7 +6,7 @@ include_once($_SERVER["DOCUMENT_ROOT"]."/php/constants.php");
 
 $db = new PDO('mysql:host='.DB_SERVER.';dbname='.DB_NAME, DB_USER, DB_PASSWORD);
 
-// if (isset($_POST['libelle']) || isset($_POST['N']) || isset($_POST['corde']) || isset($_POST['Tmax']) || isset($_POST['Fmax']) || isset($_POST['id'])) {
+if (isset($_GET['libelle']) || isset($_GET['N']) || isset($_GET['corde']) || isset($_GET['Tmax']) || isset($_GET['Fmax']) || isset($_GET['id'])) {
   $libelle = $_GET['libelle'];
   $nb_points = $_GET['N'];
   $corde = $_GET['corde'];
@@ -35,15 +35,19 @@ $db = new PDO('mysql:host='.DB_SERVER.';dbname='.DB_NAME, DB_USER, DB_PASSWORD);
 
 $parametre = new Parametre(['id' => $idparam, 'libelle' => $libelle, 'corde' => $corde, 'tmax_pourcent' => $tmax, 'fmax_pourcent' => $fmax, 'nb_points' => $nb_points, 'tmax_mm' =>$tmax_mm, 'fmax_mm' => $fmax_mm, 'date_creation' => $dateCreation,
  'fic_img' => $img, 'fic_csv' => $csv]);
- $cambrure = new Cambrure(['x' => $x, 't' => $t, 'f' => $f, 'yintra' => $intra, 'yextra' => $extra, 'igx' => $igx, 'id_parametre' => $idparam]);
+
+ for ($i=0; $i < $nb_points; $i++) {
+   $cambrure = new Cambrure(['x' => $x[$i], 't' => $t[$i], 'f' => $f[$i], 'yintra' => $intra[$i], 'yextra' => $extra[$i], 'igx' => $igx[$i],
+    'id_parametre' => $idparam[$i]]);
+ }
 
 $parametreManager->update($parametre);
 $cambrureManager->update($cambrure);
 
 
 header('Location: ../profil.php?id='.$idparam);
-// }
-// else {
-  // echo "if non passe";
-// }
+}
+else {
+  echo "if non passe";
+}
 ?>

@@ -29,12 +29,12 @@ CREATE TABLE parametre(
 
 CREATE TABLE cambrure(
         id           int (11) Auto_increment  NOT NULL ,
-        x            Int ,
-        t            Int ,
-        f            Int ,
-        yintra       Int ,
-        yextra       Int ,
-        lgx          Int ,
+        x            Float ,
+        t            Float ,
+        f            Float ,
+        yintra       Float ,
+        yextra       Float ,
+        lgx          Float ,
         id_parametre Int ,
         PRIMARY KEY (id )
 )ENGINE=InnoDB;

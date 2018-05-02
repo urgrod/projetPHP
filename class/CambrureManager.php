@@ -9,6 +9,8 @@ include 'Cambrure.php';
 class CambrureManager
 {
 
+  private $_db;
+
   /*
   Constrcuteur de la classe
   entree: requete PDO
@@ -58,13 +60,13 @@ class CambrureManager
   }
 
   /*
-  methode pour supprimer les valeurs d'un profil complet
-  entree: - id du parametre qui a genere cette cambrure
+  methode pour supprimer les valeurs d'une cambrure
+  entree: - id de la cambrure a supprimer
   sortie: ---
   */
-  public function delete($idparam){
+  public function delete($id){
 
-    $this->_db->exec("DELETE FROM cambrure WHERE id_parametre =".$idparam);
+    $this->_db->exec("DELETE FROM cambrure WHERE id =".$id);
 
   }
 
@@ -101,26 +103,35 @@ class CambrureManager
 
   /*
   methode permettant de mettre a jour toutes les cambrures voulues
-  entree:
+  entree: Cambrure contenant toutes les infos
   sortie: ---
   */
+  public function update($cambrure){
 
-  public function update(Cambrure $cambrure){
+    for ($i=0; $i < count($cambrure) ; $i++) {
 
-    $query = $this->_db->prepare("UPDATE cambrure SET x=:x, t=:t, f=:f, yintra=:yintra, yextra=:yextra, lgx=:lgx, WHERE id=:id");
+      $query = $this->_db->prepare("UPDATE cambrure SET x=:x, t=:t, f=:f, yintra=:yintra, yextra=:yextra, lgx=:lgx, WHERE id=:id");
 
-    $query->bindValue(":x", $cambrure->x());
-    $query->bindValue(":t", $cambrure->t());
-    $query->bindValue(":f", $cambrure->f());
-    $query->bindValue(":yintra", $cambrure->yintra());
-    $query->bindValue(":yextra", $cambrure->yextra());
-    $query->bindValue(":lgx", $cambrure->igx());
-    $query->bindValue(":id", $cambrure->id());
+      $query->bindValue(":x", $cambrure[$i]->x());
+      $query->bindValue(":t", $cambrure[$i]->t());
+      $query->bindValue(":f", $cambrure[$i]->f());
+      $query->bindValue(":yintra", $cambrure[$i]->yintra());
+      $query->bindValue(":yextra", $cambrure[$i]->yextra());
+      $query->bindValue(":lgx", $cambrure[$i]->igx());
+      $query->bindValue(":id", $cambrure[$i]->id());
 
-    $query->execute();
+      $query->execute();
+    }
 
   }
 
+  /*
+  methode permettant de calcul les valeurs de l'intrados
+  entree: - les valeurs de la cambrures
+  - les valeurs de l'epaisseur
+  - le nombre de points
+  sortie: - tableau d'intrados
+  */
   public function calculYintra( $f,  $t,  $nb_pts){
 
     $array = array();
@@ -132,8 +143,15 @@ class CambrureManager
       $array[] = $calcul;
     }
     return $array;
-
   }
+
+  /*
+  methode permettant de calculer les valeurs de l'extrados
+  entree: - les valeurs de la cambrures
+  - les valeurs de l'epaisseur
+  - le nombre de points
+  sortie: - tableau d'extrados
+  */
 
   public function calculYextra( $f,  $t,  $nb_pts){
 
@@ -146,9 +164,16 @@ class CambrureManager
       $array[] = $calcul;
     }
     return $array;
-
   }
 
+  /*
+  methode permettant de calculer chaque valeur de l'epaisseur selon x
+  entree: - la valeur de dx
+  - le nombre de points
+  - l'epaisseur max en mm
+  - la valeur de la corde en mm
+  sortie: - tableau d'epaisseur pour chaque x
+  */
   public function calculT($dx, $nb_pts, $tmax, $corde){
 
     $x=0;
@@ -163,9 +188,16 @@ class CambrureManager
     }
 
     return $array;
-
   }
 
+  /*
+  methode permettant de calculer chaque valeur de la cambrure selon x
+  entree: - la valeur de dx
+  - le nombre de points
+  - l'epaisseur max en mm
+  - la valeur de la corde en mm
+  sortie: - tableau de cambrure pour chaque x
+  */
   public function calculF($dx, $nb_pts, $fmax, $corde){
 
     $x=0;
@@ -182,12 +214,24 @@ class CambrureManager
     return $array;
   }
 
+  /*
+  methode permettant de supprimer les valeurs d'une cambrure correspondant a 1 parametre
+  entree: - valeur de l'id du parametre qui gere les cambrures a supprimer
+  sortie: ---
+  */
   public function deleteParam($id){
 
     $this->_db->exec("DELETE FROM cambrure WHERE id_parametre =".$id);
-
   }
 
+  /*
+  methode permettant de calculer chaque valeur de igx selon x
+  entree: - valeur de dx
+  - tableau de toutes les valeurs de l'intrados
+  - tableau de toutes les valeurs de l'extrados
+  - nombre de points
+  sortie: tableau contenant toutes les valeurs de igx selon x
+  */
   public function calculIgx($dx, $intra, $extra, $nb_pts){
 
     $x =0;
@@ -203,7 +247,6 @@ class CambrureManager
 
     return $array;
   }
-
 }
 
 

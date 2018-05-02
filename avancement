@@ -22,3 +22,4 @@ fait      • sauvegarder les fichiers générés (image et csv) et les rattache
 finaliser le graphique de la cambrure
 faire l'authentification
 faire la recherche des profils
+modifier la cambrure->update() => boucle for pour envoyer toutes les infos
