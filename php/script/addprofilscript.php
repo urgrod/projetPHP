@@ -42,9 +42,13 @@ $parametre = new Parametre(['libelle' => $libelle, 'corde' => $corde, 'tmax_pour
 $parametreManager->add($parametre);
 $cambrureManager->add($dx, $t, $f, $intra, $extra, $igx, $idparam, $nb_points);
 
+var_dump($db);
+var_dump($parametreManager);
+var_dump($parametre); 
 
 
- header('Location: ../profil.php?id='.$idparam);
+
+ // header('Location: ../profil.php?id='.$idparam);
 }
 else {
   echo "if non valide";
